@@ -1,0 +1,38 @@
+/* <기본 TRIGGER 문>
+DROP TRIGGER IF EXISTS 트리거명;
+DELIMITER //
+CREATE TRIGGER 트리거명 
+BEFORE|AFTER DELETE|INSERT|UPDATE 
+ON 테이블명 
+FOR EACH ROW
+BEGIN
+-- 실행코드
+END //
+DELIMITER ;
+*/
+/*트리거에서 추가/수정/삭제된 데이터를 가져올 때 NEW | OLD를 사용
+* INSERT :  NEW(추가된 데이터)
+	-- INSERT 된 데이터는 트리거에서 수정할 수 없음
+* UPDATE : OLD(값이 변경전 데이터), NEW(값이 변경 후 데이터)
+* DELETE : OLD(삭제된 데이터)
+*/
+
+-- 제품구매했을때 수량이 바뀌도록
+use shoppingmall;
+SELECT * FROM shoppingmall.BUY;
+DROP TRIGGER IF EXISTS INSERT_BUY;
+
+DELIMITER //
+CREATE TRIGGER INSERT_BUY AFTER INSERT
+ON BUY  
+FOR EACH ROW
+BEGIN
+-- 추가된 데이터는 NEW를 통해 가져온다
+UPDATE PRODUCT 
+	SET PR_AMOUNT = PR_AMOUNT - NEW.BUY_AMOUNT
+WHERE PR_NUM = NEW.BUY_PR_NUM;
+
+END //
+DELIMITER ;
+INSERT INTO BUY(BUY_NUM, BUY_AMOUNT, BUY_ADDRESS, BUY_POST_NUM, BUY_ME_ID,BUY_PR_NUM)
+VALUES('qwe202212211709','1','서울시 강남', '12345','qwe',2);

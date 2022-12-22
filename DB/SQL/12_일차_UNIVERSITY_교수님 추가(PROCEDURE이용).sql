@@ -1,0 +1,43 @@
+-- 160, 컴퓨터 공학부, KH교육원 1관 1층, '02-123-456'
+-- 123 ,기계공학부, KH교육원 1관 2층, '02-123-4568'
+-- 135,전자공학부,KH교욱원 2관 3층, '02-123-1234'
+
+INSERT INTO DEPARTMENT (DE_NUM, DE_NAME, DE_ADDRESS, DE_TEL, DE_PR_NUM) VALUES
+('160','컴퓨터 공학부','KH교육원 1관 1층','02-123-456',NULL),
+('123','기계공학부','KH교육원 1관 2층','02-123-4568',NULL),
+('135','전자공학부','KH교욱원 2관 3층','02-123-1234',NULL);
+
+-- 컴퓨터 공학부에 2022 홍길도 교수님이 오셨다. 이때 홍길동 교수님의 정보를 추가하는 작업을 해보세요
+-- 이때 교수님 학번은 2022 160 001이 할당 되어야함
+-- 교수 정보를 추가하기 위한 PROCEDURE
+DROP PROCEDURE IF EXISTS INSERT_PROFESSOR;
+DELIMITER //
+CREATE PROCEDURE INSERT_PROFESSOR(
+	IN _YEAR INT,
+    IN _NAME VARCHAR(20),
+    IN _DEP VARCHAR(20),
+    IN _STATE VARCHAR(10),
+    IN _TEL VARCHAR(13)
+)
+BEGIN
+	DECLARE _DEP_NUM INT; -- 학부이름을 통해서 학부번호를 가져오기 위함
+    DECLARE _PROFESSOR_COUNT INT DEFAULT 0;
+    DECLARE _PROFESSOR_NUM CHAR(10);
+	-- 학부조회 쿼리
+	SET _DEP_NUM = (SELECT DE_NUM FROM DEPARTMENT WHERE DE_NAME LIKE _DEP);
+	IF _DEP_NUM IS NOT NULL THEN -- NULL이 아닌경우에만 작업에 들어가게 하기 위해
+		-- 어느학부에 0000년도에 들어온 교수가 몇명인지 알려주는 쿼리
+		SET _PROFESSOR_COUNT = (SELECT COUNT(*)+1 FROM PROFESSOR WHERE PR_NUM LIKE CONCAT(_YEAR,_DEP_NUM,'%'));
+		SET _PROFESSOR_NUM = CONCAT(_YEAR,_DEP_NUM,LPAD(_PROFESSOR_COUNT,3,'0'));
+        -- LPAD(3자리를 기준으로 없는자리는 0으로 채워준다)
+        INSERT INTO PROFESSOR VALUES (_PROFESSOR_NUM, _NAME, _STATE,_DEP_NUM,_TEL);
+    END IF;
+END // 
+DELIMITER ; 
+
+CALL INSERT_PROFESSOR (2022,'홍길동','컴퓨터 공학부',NULL,NULL);
+CALL INSERT_PROFESSOR (2022,'임꺽정','컴퓨터 공학부','정교수',1234567);
+
+
+
+

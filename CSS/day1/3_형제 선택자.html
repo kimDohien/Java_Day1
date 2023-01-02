@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Document</title>
+	<style>
+		/*
+		<형제선택자>
+		선택자1+선택자2 : 선택자1이 나온 후 바로 뒤에 있는 형제 선택자2 
+		=>선택자 1이 있는 선택자2만 가능
+		
+		선택자1~선택자2 : 선택자 뒤에있는 현제 선택자2모두 
+		=> 첫번째 요소만 다르고 나머지는 같을때 사용
+		*/
+		.item+.item{ 	color: blueviolet;	}
+		.item~.item{background-color: yellow;} /* 5번과 4번은 형제가 아니기때문에 1234번 따로 56번 따로*/
+	</style>
+</head>
+<body>
+	<ol>
+		<li class="item">1</li>
+		<li class="item1">2</li>
+		<li class="item">3</li>
+		<li class="item">4</li>
+	</ol>
+	<ul>
+		<li class="item">5</li>
+		<li class="item">6</li>
+	</ul>
+</body>
+</html>

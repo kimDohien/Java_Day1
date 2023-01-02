@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>picture태그</title>
+</head>
+<body>
+	<!-- 
+		-이미지 태그와 유사하 
+		-이미지 태그로 구현 가능(css활용)
+		-화면 크기에 따라 보여질 이미지를 다르게 선택 가능
+
+		media: 화면 크기 지정
+
+		브라우저 가로가 500px이상이면 명수1.jfif를
+		브라우저 가로가 500px미만이고 300px이상이면 명수2.jfif를
+		브라우저 가로가 300px미만이면 아먀.jfif를 화면에 출력
+	-->
+	<picture>
+		<source media="(min-width:800px)" srcset="../img/명수1.jfif">
+		<source media="(min-width:400px)" srcset="../img/명수2.jfif">
+		<img src ="../img/야마.jfif" alt ="야마" width="200" height="auto">
+	</picture>
+</body>
+</html>

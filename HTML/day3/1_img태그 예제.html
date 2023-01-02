@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Document</title>
+</head>
+<body>
+	<!-- 주소 복사 -->
+	<input width = "300" height="auto" type ="image" src="https://ichef.bbci.co.uk/news/800/cpsprodpb/E172/production/_126241775_getty_cats.png" alt ="고얌미"> <br>
+	
+	<!-- 절대경로 (최상위 폴더를 기준으로 경로를 탐색) 
+	 	- root폴더(최상위폴더) : html폴더 
+	  - /로 시작 
+		-  절대 경로가 바뀌면 문제가 됨
+	-->
+	<input width = "300" type="image" src ="/img/고먐미.png" alt ="곰먐미"> <br> 
+
+	<!-- 상대경로 (현재 파일 위치를 기준으로 탐색) 
+		- 최상위 폴더가 바뀌어도 문제가 되지 않는다
+		- .. : 상위 폴더로 이동
+		- ./ 현재 폴더
+ -->
+	<input width = "300" type="image" src ="../img/고먐미.png" alt ="곰먐미"> <br> 
+
+	<img width = "150" hegith =" auto" src="../img/고먐미.png" alt="고먐스"><br>
+</body>
+</html>

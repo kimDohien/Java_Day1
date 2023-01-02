@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>선택자 예제</title>
+	<style>
+		/* 모든 태그가 하늘색으로 바뀌도록 */
+		*{
+			color: aqua;}
+			div{background-color : yellow ;}
+		/* id가 name사람을 볼드체로 */
+		#name{font-weight: bold;}
+		/* 클래스 선택자를 바 없게 */
+		.bar {text-decoration: none;}
+		/* 후손선택자 */
+		body div{}
+		/* 자식선택자 */
+		body > div{}
+		/* 속성선택자 */
+		input[type = text]{}
+		
+	</style>
+</head>
+<body>
+	<div>안녕</div>
+	<p id="name">내 이름은 김도현</p>
+	<a href="http://www.naver.com" class="bar">네이버로</a>
+	<div class="box"></div>
+	<div id="box"></div>
+</body>
+</html>

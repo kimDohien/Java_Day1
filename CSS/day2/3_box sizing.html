@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Document</title>
+	<style>
+		.box{
+			width : 200px; height: 200px;
+			background-color: aquamarine;
+			margin-bottom: 20px;
+		}
+		.box1{
+			border: 10px solid black; /*여배과 테두리가 합쳐지면 더 커진다*/
+			box-sizing: content-box;
+		}
+		.box2{
+			border: 10px solid black; 
+			box-sizing: border-box; /*컨테츠 크기가 줄어든다.*/
+		}
+	</style>
+</head>
+<body>
+	<div class="box box1"></div>
+	<div class="box box2"></div>
+</body>
+</html>

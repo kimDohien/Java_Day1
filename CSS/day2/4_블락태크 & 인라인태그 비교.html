@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>블태 & 인태 비교</title>
+	<style>
+			/* 
+	-	블락태그이므로 크기 변경이 가능
+	- 새 라인에서 시작(한줄 전체를 씀)
+	*/
+		.box1{
+			width: 50px; height: 50px;
+			background: rgb(175, 25, 175);
+		}
+		/* 인라인 태그이므로 현재 위치에서 시작.
+		크기변경 불가 */
+		.box2{
+			width:  50px; height: 50px;
+			background: gray;
+			display none;
+		}
+		/* 인라인 블락 태그이므로 크기변경이 가능
+		현재 위치에서 시작 */
+		.box3{
+			width: 50px; height: 50px;
+			background: blue; color: blanchedalmond;
+		}
+	</style>
+</head>
+<body>
+	<div class="box box1"></div>
+	<div class="box box2"></div>
+	<input type="text" class="box3">
+</body>
+</html>

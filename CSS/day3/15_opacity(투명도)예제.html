@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Document</title>
+	<style>
+		.container-box{
+			height: 500px; background: rgba(255, 0, 0, 0.5); /*rgba를 이용하면 자식요소에 영향X*/
+			padding: 100px; /*부모 투명이 높으면 자손은 선명할수 없다.*/
+		}
+		.box{
+			height: 200px; background: green;
+			opacity:0.2;
+		}
+	</style>
+</head>
+<body>
+	<div class="container-box">
+		<div class="box"></div>
+	</div>
+</body>
+</html>

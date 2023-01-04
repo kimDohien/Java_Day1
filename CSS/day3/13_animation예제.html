@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>animation 예제</title>
+	<style>
+		@keyframes changeColor {/*@keyframes 애니메이션명*/
+			0%{ /*초기값 0% 또는 from 으로 쓸수있따.*/
+				color: lightblue;
+			}
+			50%{
+				color: rgb(54, 94, 170);
+			}
+			100%{/*완성된값 100%또는 to로 쓸수 있음.*/
+				color: rgb(18, 36, 190);
+			}
+		}
+		.box{
+			font-size: 100px; font-weight: bold;
+			animation-name: changeColor;
+			animation-duration: 3s;
+			animation-iteration-count: infinite;
+		}
+	</style>
+</head>
+<body>
+	<div class="box">Ocean</div>
+</body>
+</html>

@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Document</title>
+	<style>
+		input:focus{
+			background: lightblue;
+		}
+		input:checked+label{
+			background: yellow;
+		}
+		input:not(#text){ /*()안에 들어가는 요소가 아닌것들..을 빼고 선택*/
+			background: lightcoral;
+		}
+	</style>
+</head>
+<body>
+	<input type="text">
+	<input type="checkbox" name="" id="apple">
+	<label for="apple">사과</label>
+</body>
+</html>

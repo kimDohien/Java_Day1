@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>메뉴 예제</title>
+	<style>
+		.menu-list{
+			list-style: none; padding: 0;  
+			border : 5px solid black;
+		}
+		.menu-list::after{
+			clear:both; content:'';display:block;
+		}
+		.menu-link{
+			text-decoration: none; color: blue;
+			display: block; height: 100%; /* 이렇게 하면 블락은 부모의 100% 이기때문에 전체를 잡는다.*/
+			text-align: center; line-height: 50px;
+		}
+		.menu-item{
+			float:left; width: 33.33%; height: 50px;
+		}
+		.menu-item + .menu-item{
+			border-left: 5px solid black; margin-left: -5px;
+		}
+	</style>
+</head>
+<body>
+	<nav> <!-- nav : 시멘트 태그-->
+		<ul class="menu-list">
+			<li class="menu-item">
+				<a href="http://www.naver.com" class="menu-link">Menu1</a>
+			</li>
+			<li class="menu-item">
+				<a href="http://www.youtube.com" class="menu-link">Menu2</a>
+			</li>
+			<li class="menu-item">
+				<a href="http://www.google.com" class="menu-link">Menu3</a>
+			</li>
+		</ul>
+	</nav>
+</body>
+</html>

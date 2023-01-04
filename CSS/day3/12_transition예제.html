@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Document</title>
+<style>
+	.box{
+		font-size: 50px;
+		transition-property: font-size ; /*감지할 속성*/
+		transition-delay: 0.5s; /*감지 시간 -> 생략 가능*/
+		transition-duration: 3s;/*지속 시간-> 효과가 몇초에 걸쳐 나타날건지*/
+		transition-timing-function: ease; 
+		transition: font-size 3s ease  0.5s, 
+								color 3s ease 0.5s;
+	}
+	.box:hover{
+		font-size: 200px;
+		color: red;
+	}
+</style>
+</head>
+<body>
+	<div class="box">꽝</div>
+</body>
+</html>

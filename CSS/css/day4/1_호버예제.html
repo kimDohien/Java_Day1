@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>호버예제</title>
+	<style>
+	*{padding: 0; margin: 0;}
+	ul{list-style: none;}
+	a{text-decoration: none; color: black;}
+	.menu-item{
+		width: 300px; height: 50px; /*메뉴아이템이 테두리를 지정하면 빈공간이 남아서 link에 지정*/
+	}
+	.menu-link{
+		/*반드시 해야하 하는 요소*/
+		display: block;
+		border: 5px solid lightblue;
+		height: 100%; /*부모의 높이 100%로 가져옴*/
+		text-align: center;
+		line-height: auto;
+		/*보기 편하라고 하는 요소*/
+		font-size: 20px;
+		font-weight: bold;
+	}
+	.submenu-list{
+		margin-top: -5px;
+		display: none;
+	}
+	.submenu-item{
+		height: 50px; 
+	}
+	.submenu-link{
+		display: block; height: 100%; border: 5px solid black;
+		text-align: center; line-height: 50px;
+		box-sizing: border-box; /*부모 와 같은 박스사이즈로 하기 위해 추가작업*/
+		font-size: 20px; 		font-weight: bold;
+		
+	}
+.submenu-item~.submenu-item>.submenu-link{
+	margin-top: -5px;
+}
+.menu-item:hover .submenu-list{
+	display: block;
+}
+
+	</style>
+</head>
+<body>
+	<ul class="menu-list">
+		<li class="menu-item">
+			<a href="#" class="menu-link">메뉴1</a>
+			<ul class="submenu-list">
+				<li class="submenu-item">
+					<a href="#" class="submenu-link">메뉴1-1</a>
+				</li>
+				<li class="submenu-item">
+					<a href="#" class="submenu-link">메뉴1-2</a>
+				</li>
+				</ul>
+		</li>
+	</ul>
+</body>
+</html>

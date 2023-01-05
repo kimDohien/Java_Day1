@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>검색창 예제</title>
+
+	<style>
+		*{padding: 0; margin: 0;}
+
+		.container-box{
+			border: 2px solid green;
+			width: 400px; 
+			padding: 10px;
+			padding-right: 62px;
+			position: relative; /*container-bx가 기준*/
+			border-radius: 3px;
+		}
+		.search-input{
+			width: 100%;
+			height: 30px;
+			margin-top: 10px;
+			font-size: 18px;
+			border: 0;
+			outline:0 ; /*검색창 클릭했을때 테두리가 안보이게 함*/
+			
+		}
+		.search-btn{
+			width: 52px;
+			position: absolute; top: -2px; bottom: -2px; right: -2px; /*테두리에 딱 맞게 하기위해*/
+			background: green; border: 0; /*border:0 or style:none 으로 하면 테두리가 안보임*/
+			color: white; font-weight: bold;
+			border-radius: 0 3px 3px 0;
+			cursor: pointer; /*커서 모양*/
+		}
+
+	</style>
+
+</head>
+<body >
+	<form action="" class="container-box">
+		<input type="text" class="search-input">
+		<button type="submit" class="search-btn">검색</button>
+	</form>
+</body>
+</html>

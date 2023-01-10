@@ -1,0 +1,869 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<script src="https://kit.fontawesome.com/e0df5655cc.js" crossorigin="anonymous"></script>
+	<title>Document</title>
+	<style>
+		* {
+			margin: 0;
+			padding: 0;
+		}
+
+		ul,
+		ol {
+			list-style: none;
+		}
+
+		a {
+			text-decoration: none;
+		}
+
+		#body {
+			min-width: 1190px;
+			font-family: -apple-system, BlinkMacSystemFont, "Malgun Gothic", "맑은 고딕", helvetica, "Apple SD Gothic Neo", sans-serif;
+			line-height: 16px;
+			font-size: 12px;
+			color: #202020;
+			height: 1000px;
+		}
+
+		.inner-container {
+			width: 1130px;
+			margin: 0 auto;
+			padding: 0 30px;
+		}
+
+		.box-search {
+			position: relative;
+			height: 160px;
+		}
+
+		.box-search .box-service {
+			position: absolute;
+			right: -3px;
+			top: 12px;
+		}
+
+		.box-search .link-start-page {
+			font-size: 11px;
+			color: #404040;
+			float: left;
+		}
+
+		.box-search .link-start-page:hover {
+			text-decoration: underline;
+		}
+
+		.box-search .link-start-page::after {
+			content: '';
+			width: 26px;
+			height: 26px;
+			display: inline-block;
+			background-position: -382px -213px;
+			vertical-align: top;
+			margin: -3px 0 0 3px;
+		}
+
+		.box-search .link-jrnaver {
+			float: left;
+		}
+
+		.box-search .link-jrnaver .icon-jrnaver {
+			width: 60px;
+			height: 10px;
+			background-position: -264px -296px;
+			display: inline-block;
+			vertical-align: top;
+			margin: 3px;
+		}
+
+		.box-search .link-jrnaver:hover .icon-jrnaver {
+			background-position: -326px -296px;
+		}
+
+		.box-search .icon-bar {
+			float: left;
+			width: 1px;
+			height: 10px;
+			margin: 3px 7px;
+			background: #e4e8eb;
+		}
+
+		.box-search .link-happybean {
+			float: left;
+			margin-left: 6px;
+		}
+
+		.box-search .link-happybean .icon-happybean {
+			width: 34px;
+			height: 11px;
+			background-position: -365px -245px;
+			display: inline-block;
+			vertical-align: top;
+			margin: 3px 3px 2px;
+		}
+
+		.box-search .link-happybean:hover .icon-happybean {
+			background-position: -380px -199px;
+		}
+
+		.box-search .box-search-area {
+			position: absolute;
+			top: 50%;
+			left: 238px;
+			margin-top: -28px;
+		}
+
+		.box-search .form-search {
+			width: 582px;
+			height: 52px;
+			border: 2px solid #19ce60;
+			border-radius: 2px;
+			border-color: #6399de;
+		}
+
+		.box-search .input-search {
+			width: 444px;
+			height: 24px;
+			padding: 13px 15px;
+			margin: 1px;
+			background-color: #fff;
+			font-size: 18px;
+			line-height: 24px;
+			color: #000;
+			font-weight: bold;
+			outline: 0;
+			border: 0;
+		}
+
+		.box-search .btn-search {
+			position: absolute;
+			top: 0;
+			right: 0;
+			bottom: 0;
+			width: 56px;
+			background-color: #19ce60;
+			background-color: #6399de;
+			border: 0;
+			outline: 0;
+			border-radius: 0 2px 2px 0;
+			cursor: pointer;
+		}
+
+		.box-search .icon-search {
+			width: 22px;
+			height: 22px;
+			display: inline-block;
+			vertical-align: top;
+			background-position: -420px -24px;
+		}
+
+		.box-search .btn-auto-complete {
+			position: absolute;
+			top: 0;
+			bottom: 0;
+			right: 64px;
+			width: 22px;
+		}
+
+		.box-search .icon-auto-complete {
+			display: inline-block;
+			width: 10px;
+			height: 5px;
+			background-position: -158px -151px;
+			position: absolute;
+			top: 50%;
+			left: 50%;
+			margin: -2px 0 0 -5px;
+		}
+
+		.box-search .btn-kbd {
+			position: absolute;
+			top: 0;
+			bottom: 0;
+			right: 84px;
+			width: 36px;
+		}
+
+		.box-search .icon-kbd {
+			display: inline-block;
+			width: 20px;
+			height: 12px;
+			background-position: -398px -267px;
+			position: absolute;
+			top: 50%;
+			left: 50%;
+			margin: -6px 0 0 -10px;
+		}
+
+
+		.blind {
+			position: absolute;
+			width: 1px;
+			height: 1px;
+			margin: -1px;
+			overflow: hidden;
+		}
+
+		.box-search .icon-naver-logo {
+			width: 222px;
+			height: 52px;
+			display: inline-block;
+			vertical-align: top;
+			background-position: 0 -158px;
+		}
+
+		.box-search .link-naver-logo {
+			position: absolute;
+			top: 50%;
+			left: -9px;
+			margin-top: -32px;
+		}
+
+		.container-search {
+			border-bottom: 1px solid #e4e8eb;
+		}
+
+		/* 메뉴 */
+		.group-menu>* {
+			/*group-menu밑에있는 요소들*/
+			float: left;
+		}
+
+		.group-menu {
+			padding: 11px 270px 11px 0;
+		}
+
+		.group-menu .item-fix-menu~.item-fix-menu {
+			margin-left: 12px;
+		}
+
+		.group-menu .item-fix-menu {
+			float: left;
+		}
+
+		.group-menu .link-fix-menu {
+			color: #03c750;
+			display: block;
+			font-size: 15px;
+			line-height: 30px;
+			font-weight: bold;
+			letter-spacing: -.3px;
+		}
+
+		.group-menu .icon-mail {
+			width: 21px;
+			height: 21px;
+			display: inline-block;
+			background-position: -420px -73px;
+			margin: 3px 9px 0 0;
+			vertical-align: top;
+		}
+
+		.group-menu .icon-shopping {
+			width: 24px;
+			height: 20px;
+			background-position: -76px -386px;
+			vertical-align: top;
+			content: '';
+			display: block;
+		}
+
+		.group-menu .item-fix-menu:nth-child(5) {
+			padding: 5px 0;
+		}
+
+		.group-menu .icon-splive {
+			width: 54px;
+			height: 20px;
+			background-position: -209px -267px;
+			vertical-align: top;
+			content: '';
+			display: block;
+			padding: 5px 0;
+		}
+
+		.group-menu .item-fix-menu:nth-child(6) {
+			padding: 5px 0;
+		}
+
+		.group-menu .icon-tv {
+			width: 12px;
+			height: 14px;
+			display: inline-block;
+			background-position: -256px -212px;
+			vertical-align: top;
+			margin: 9px 2px 0 0;
+		}
+
+		/* 공통 */
+		.clearfix::after {
+			/*플롯 속성의 자손요소들을 부모의 높이만큼 잡아줌*/
+			clear: both;
+			display: block;
+			content: '';
+		}
+
+		.item-favorite-menu {
+			margin-left: 12px;
+		}
+
+		.group-menu .item-favorite-menu {
+			float: left;
+		}
+
+		.group-menu .link-favorite-menu {
+			display: block;
+			text-decoration: none;
+			font-size: 15px;
+			line-height: 30px;
+			font-weight: 700;
+			letter-spacing: -.3px;
+			color: #000;
+		}
+
+		.group-menu .btn-more {
+			float: left;
+			margin-left: 17px;
+			font-size: 13px;
+			line-height: 30px;
+			color: #202020;
+			text-align: right;
+		}
+
+		.icon-more {
+			display: inline-block;
+			width: 11px;
+			height: 7px;
+			background-position: -402px -296px;
+			content: '';
+			margin-left: 7px;
+			vertical-align: 2px;
+		}
+
+		.btn-more:hover {
+			text-decoration: underline;
+		}
+
+		.ly-service {
+			position: absolute;
+			top: 52px;
+			right: 0;
+			left: 0;
+			padding: 20px 30px 22px;
+			background-color: #fff;
+			border-top: 1px solid #e4e8eb;
+			box-shadow: 0 4px 4px 0 rgb(0 0 0 / 12%);
+			display: none;
+		}
+
+		.ly-serivie .group-service {
+			overflow: hidden;
+			display: table;
+			width: 1128px;
+			margin: 0 auto;
+			border: 1px solid #e4e8eb;
+			border-width: 0 1px;
+			table-layout: fixed;
+		}
+
+		.group-service .list-service {
+			display: table-cell;
+			padding: 0 14px 0 15px;
+			font-size: 13px;
+			line-height: 26px;
+			letter-spacing: -.25px;
+		}
+
+		.group-service .service-title {
+			margin-bottom: 3px;
+			color: #000;
+			font-weight: 700;
+		}
+
+		.group-service .list-service {
+			border-left: 1px;
+			scrollbar-width: #e4e8eb;
+		}
+
+		.icon-more:visited .ly-service {
+			display: block;
+		}
+
+		.container-box .inner-container {
+			padding: 20px 30px;
+			width: 1130px;
+			position: relative;
+		}
+
+		.box-body .box-body-left {
+			float: left;
+			width: 750px;
+		}
+
+		.box-body .box-body-right {
+			float: right;
+			width: 350px;
+		}
+
+		.ad a {
+			display: block;
+	
+		}
+
+
+		.ad iframe{width: 750px; height: 135px ;}
+	
+		/* 오른쪽 첫번째 박스 */
+		.main-login-box{
+		padding: 16px 16px 12px 17px;
+    background-color: #f7f9fa;
+    border: 1px solid #dae1e6;
+		}
+		.main-login-box .login-msg{
+		padding-left: 3px; letter-spacing: -.2px;
+    color: grey; font-size: 12px; line-height: 16px;
+		}
+		.main-login-box .link-login{
+		display: block; padding: 15px 0;
+    margin-top: 11px; background-color: #19ce60;
+    border: 1px solid #15c654; 
+    border-radius: 2px; font-size: 13px;
+    color: #fff; font-weight: 700;
+    text-align: center; text-decoration: none;
+		}
+
+		.main-login-box .sub-area{
+			margin: 14px 8px 0 4px; 
+		
+		}
+
+		.sub-area  .id{
+			color: #404040; float: left;
+			letter-spacing: -.2px;
+		}
+		.sub-area .pw{
+			color: #404040; float: left;
+			letter-spacing: -.2px;
+		}
+	
+		.main-login-box .link-join{
+			color: #505050;float: right;
+		}
+		.link-join .icon-join{
+		display: inline-block;  width: 11px;
+    height: 11px; background-position: -401px -245px;
+    vertical-align: top; ; margin: 2px 5px 0 0;
+		}
+		.link-login .icon-naver{
+		display: inline-block;  width: 60px;
+    height: 12px; background-position: -202px -296px;
+    vertical-align: top; margin: 2px 5px 0 0;
+		}
+		.lookbox .icon-lock{
+		display: inline-block; width: 10px;
+    height: 14px;  background-position: -408px -55px;
+   	vertical-align: top; ; margin: -1px 1px 1px;
+		}
+		.lookbox .pw ::before{
+		display: inline-block; width: 3px; border-radius:50%;
+    height: 3px; vertical-align: 3px; margin: 0 5px 0 6px; background-color: #d7dce0;}
+		
+		.sub-area> .lookbox *:hover{text-decoration: underline;}
+		
+		/* 뉴스 */
+		.sc-newscast{width: 750px; margin-top: 12px;}
+		.sc-newscast .newsstand-header{  
+		position: relative; padding: 12px 15px 11px 15px; line-height: 24px;
+    background-color: #f7f9fa; border: 1px solid #dae1e6;
+		}
+		.sc-newscast .issue-area{
+			float: left;
+		}
+		.sc-newscast .link-media{
+		overflow: hidden; text-overflow: ellipsis; letter-spacing: -.3px;
+    white-space: nowrap; float: left; position: relative;
+    max-width: 89px; padding-right: 12px; margin-right: 7px;
+    font-size: 13px; color: #000; font-weight: 700; text-decoration: none;
+		}
+		.newsstand-header .link-mdia::after{
+		position: absolute; top: 7px; right: 0; display: inline-block;
+    width: 6px; height: 10px; background-position: -262px -112px;
+    background-repeat: no-repeat; vertical-align: top; content: '';
+		}
+		.newsstand-header .list-issue{
+		overflow: hidden; float: left; width: 310px; height: 24px;
+		}
+
+		.sc-newscast .direct-area{
+			float: right; font-weight: 700;
+		}
+		.direct-area .link-news{
+		float: left; height: 24px; font-size: 13px;
+    text-decoration: none; color: #3565c9;
+		}
+		.direct-area .link-direct{
+		margin: 0 4px 0 7px; color: #202020;	
+		float: left; height: 24px; font-size: 13px; text-decoration: none;
+		}
+
+		.direct-area .link-news::after{
+	  background-color: #c8ccd1; display: inline-block;
+    width: 3px; height: 3px; -webkit-border-radius: 50%;
+    border-radius: 50%; vertical-align: top; content: '';
+    margin-left: 8px; vertical-align: 3px;
+		}
+		.newsstand-title{
+		padding: 22px 0 16px;  font-size: 14px;  line-height: 18px;	
+		}
+		.newsstand-title .link-newsstand::before{
+		display: inline-block; width: 27px; height: 24px;
+    background-position: -272px -342px; background-repeat: no-repeat;
+    vertical-align: top; content: ''; margin: -6px 1px 0 0;	
+		}
+		.newsstand-title .link-newsstand::after{
+		display: inline-block; width: 7px; height: 11px;
+    background-position: -410px -213px; background-repeat: no-repeat;
+    vertical-align: top; content: ''; margin-left: 6px; vertical-align: -1px;	
+		}
+		.newsstand-title .link-newsstand{
+			float: left; color: #000; font-weight: 700;
+    text-decoration: none; white-space: nowrap;
+		}
+		.newsstand-title .sort-area{
+			float: left;margin-left: 10px;	
+		}
+		.newsstand-title .btn-sort{
+		font-size: 14px; color: #505050; text-decoration: none;
+		letter-spacing: -.2px; 
+		}
+		.newsstand-title .btn2{
+		color: #000;font-weight: 700;
+		}
+		.newsstand-title .btn2::before{
+			background-color: #c7ccd1; display: inline-block;
+    width: 4px; height: 4px;-webkit-border-radius: 50%; vertical-align: 3px;
+    border-radius: 50%; vertical-align: top; content: ''; margin: 0 8px 0 4px;
+		}
+		.newsstand-title .set-area{float: right;}
+		.btn-set{float: left; padding: 0 9px;	} 
+		.newsstand-title .set-area .icon-list{
+			display: inline-block; width: 14px; height: 13px;
+    background-position: -244px -310px; vertical-align: top; opacity: .7;
+		}
+		.newsstand-title .set-area .icon-tile{
+		display: inline-block; width: 13px;height: 13px;
+    background-position: -276px -310px; vertical-align: top;
+		}
+		.newsstand-title .set-area .icon-set{   
+	  display: inline-block; width: 15px;height: 15px;
+    background-position: -102px -386px; vertical-align: top;
+    opacity: .7; filter: alpha(opacity=70); margin: -1px 0 1px;}
+
+		.newsstand-view-container{
+			position: relative;
+		}
+		.newsstand-view-container .group-news{
+		position: relative;height: 260px; border: 1px solid #dae1e6; border-width: 1px 0;
+		}
+		.newsstand-view-container .news-btn-prev{
+		top: 190px; position: absolute;  left: -27px; z-index: 10;
+		}
+		.news-btn-prev .icon-btn.img1{
+		display: inline-block; width: 44px; height: 44px;
+    background-position: -224px -158px; vertical-align: top;
+		}	
+		
+		.newsstand-view-container .news-btn-next{
+			top: 109px; position: absolute; right: -13px; z-index: 10;
+		}
+		.news-btn-next .icon-btn.img1{
+		display: inline-block;  width: 44px; height: 44px;
+    background-position: -92px -296px; vertical-align: top;	
+		}
+		.group-news .news-page{
+			height: 100%; overflow: hidden;
+		}
+		.group-news .tile-view{
+			position: relative; height: 260px; border: 1px solid #dae1e6;  border-width: 0 1px;
+		}
+		.group-news .frame-area{
+			position: absolute; top: 0; left: 0; right: 0; bottom: 0;
+		}
+		.tile-view .frame-area .line{
+			position: absolute; background-color: #e4e8eb; z-index: 1;
+		}
+		.sc-newcast .tile-view .frame-area .to-right1{
+			top: 65px;left: 0; right: 0;height: 1px;
+		}
+		.sc-newcast .tile-view .frame-area .to-right2{
+			top: 130px;left: 0; right: 0;height: 1px;
+		}
+		.sc-newcast .tile-view .frame-area .to-right3{
+			top: 195px;left: 0; right: 0;height: 1px;
+		}
+		.sc-newcast .tile-view .frame-area .to-bottom1{
+			top:0 ;bottom:0 ;width: 1px;left: 124px;
+		}
+		.sc-newcast .tile-view .frame-area .to-bottom2{
+			top:0 ;bottom:0 ;width: 1px;left: 248px;
+		}
+		.sc-newcast .tile-view .frame-area .to-bottom3{
+			top:0 ;bottom:0 ;width: 1px;left: 372x;
+		}
+		.sc-newcast .tile-view .frame-area .to-bottom4{
+			top:0 ;bottom:0 ;width: 1px;left: 497px;
+		}
+		.sc-newcast .tile-view .frame-area .to-bottom5{
+			top:0 ;bottom:0 ;width: 1px;left: 622px;
+		}
+		.sc-newscast .thumb-box{
+			position: relative; float: left; width: 16.66%; height: 65px;
+		}
+		.sc-newscast .thumb-box .thumb{    
+		display: block; padding: 23px 0 22px; text-align: center;
+		}
+		.sc-newcast .tile-view .thumb .img{
+		vertical-align: top; border: 0; overflow-clip-margin: content-box; overflow: clip;}
+	
+	
+		/* 이미지 */
+		.img1::after,.icon-jrnaver.img1,.icon-happybean.img1,
+		.icon-search.img1,.icon-auto-complete.img1,.icon-kbd.img1,
+		.icon-naver-logo.img1,.icon-mail.img1,.icon-splive.img1,
+		.icon-tv.img1,.icon-shopping.img1,.icon-more.img1, .icon-naver.img1,
+		.icon-lock.img1, .icon-jum.img1 , .icon-join.img1 .icon-issue.img1,
+		.link-newsstand::before,.link-newsstand::after ,.btn2::before,
+		.icon-list.img1,.icon-tile.img1, .icon-set.img1,.news-btn-prev.icon-btn.img1,
+		.news-btn-next.icon-btn.img1{
+			background-image: url(img/img1.png);
+			background-size: 442px 428px;
+		}
+	</style>
+</head>
+
+<body>
+	<div id="body">
+		<div class="container-search">
+			<div class="inner-container"> <!--파랑-->
+				<div class="box-search"> <!--녹색-->
+					<div class="box-service">
+						<a href="https://help.naver.com/service/30016/contents/18042?osType=PC&lang=ko"
+							class="link-start-page img1">네이버를 시작페이지로</a>
+						<i class="icon-bar"></i>
+						<a href="https://jr.naver.com/" class="link-jrnaver">
+							<i class="icon-jrnaver img1"></i>
+							<span class="blind">쥬니어네이버</span>
+						</a>
+						<a href="https://happybean.naver.com/" class="link-happybean">
+							<i class="icon-happybean img1"></i>
+							<span class="blind">해피빈</span>
+						</a>
+					</div>
+					<!-- 우측 상단 서비스 페이지 구현 완료 -->
+					<div class="box-search-area">
+						<form action="" class="form-search">
+							<input type="text" class="input-search">
+							<button class="btn-search">
+								<i class="icon-search img1"></i>
+								<span class="blind">검색</span>
+							</button>
+							<a href="#" class="btn-kbd">
+								<i class="icon-kbd img1"></i>
+								<span class="blind">가상키보드</span>
+							</a>
+							<a href="#" class="btn-auto-complete">
+								<i class="icon-auto-complete img1"></i>
+								<span class="blind">자동완성</span>
+							</a>
+						</form>
+					</div>
+					<!-- 검색창 구현 완료 -->
+					<a href="http://www.naver.com" class="link-naver-logo">
+						<i class="icon-naver-logo img1"></i>
+						<span class="blind">네이버</span>
+					</a>
+				</div>
+			</div>
+		</div>
+		<div class="container-menu">
+			<div class="inner-container">
+				<div class="box-menu">
+					<div class="group-menu clearfix">
+						<ul class="list-fix-menu clearfix">
+							<li class="item-fix-menu"><a href="#" class="link-fix-menu"><i class="icon-mail img1"></i>메일</a></li>
+							<li class="item-fix-menu"><a href="#" class="link-fix-menu">카페</a></li>
+							<li class="item-fix-menu"><a href="#" class="link-fix-menu">블로그</a></li>
+							<li class="item-fix-menu"><a href="#" class="link-fix-menu">지식iN</a></li>
+							<li class="item-fix-menu"><a href="#" class="link-fix-menu"><i class="icon-shopping img1"></i><span
+										class="blind">쇼핑</span></a></li>
+							<li class="item-fix-menu"><a href="#" class="link-fix-menu"><i class="icon-splive img1"></i><span
+										class="blind">쇼핑live</span></a></li>
+							<li class="item-fix-menu"><a href="#" class="link-fix-menu">Pay</a></li>
+							<li class="item-fix-menu"><a href="#" class="link-fix-menu"><i class="icon-tv img1"></i>TV</a></li>
+						</ul>
+						<ul class="list-favorit-menu clearfix">
+							<li class="item-favorite-menu"><a href="#" class="link-favorite-menu">사전</a></li>
+							<li class="item-favorite-menu"><a href="#" class="link-favorite-menu">뉴스</a></li>
+							<li class="item-favorite-menu"><a href="#" class="link-favorite-menu">증권</a></li>
+							<li class="item-favorite-menu"><a href="#" class="link-favorite-menu">부동산</a></li>
+							<li class="item-favorite-menu"><a href="#" class="link-favorite-menu">지도</a></li>
+							<li class="item-favorite-menu"><a href="#" class="link-favorite-menu">VIBE</a></li>
+							<li class="item-favorite-menu"><a href="#" class="link-favorite-menu">도서</a></li>
+							<li class="item-favorite-menu"><a href="#" class="link-favorite-menu">웹툰</a></li>
+						</ul>
+						<a href="#" role="button" class="btn-more">더보기<span class="icon-more img1">
+								<div class="ly-service">
+									<div class="group-service">
+										<dl class="list-service">
+											<dt class="service-title">ㄱ-ㅁ</dt>
+										</dl>
+										<dl class="list-service">
+											<dt class="service-title">ㅂ-ㅅ</dt>
+										</dl>
+										<dl class="list-service">
+											<dt class="service-title">ㅇ</dt>
+										</dl>
+										<dl class="list-service">
+											<dt class="service-title">ㅈ-ㅊ</dt>
+										</dl>
+										<dl class="list-service">
+											<dt class="service-title">ㅋ-ㅎ</dt>
+										</dl>
+										<dl class="list-service">
+											<dt class="service-title">A-Z</dt>
+										</dl>
+										<dl class="list-service">
+											<dt class="service-title">사전</dt>
+										</dl>
+									</div>
+								</div>
+							</span>
+						</a>
+					</div>
+					<div class="group-weather"></div>
+				</div>
+			</div>
+		</div>
+		<div class="container-box">
+			<div class="inner-container">
+				<div class="box-body clearfix">
+					<div class="box-body-left"> <!--왼쪽박스-->
+						<div class="ad">
+							<a href="http://www.naver.com">
+								<iframe src="add1.html" frameborder="0">
+								</iframe>
+							</a>
+						</div>
+						<div class="sc-newscast">
+							<div class="newsstand-header clearfix">
+								<div class="issue-area"><i class="icon-issue img1"></i><a href="" class="link-media">연합뉴스</a></div>
+								<div class="list-issue"> <!--바뀌는 뉴스-->
+									<div class="eg-flick-viewport"></div>
+								</div>
+								<div class="direct-area">
+									<a href="#" class="link-news">뉴스홈</a>
+									<a href="#" class="link-direct">연예</a>
+									<a href="#" class="link-direct">스포츠</a>
+									<a href="#" class="link-direct">경제</a>
+								</div>
+							</div>
+							<div class="newsstand-title clearfix">
+								<i class="icon-link-newsstand"></i>
+								<a href="" class="link-newsstand img1">뉴스스탠드 </i> </a>
+								<div class="sort-area">
+									<a href="#"  class="btn-sort btn1">구독한 언론사</a>
+									<a href="#" class="btn-sort btn2">전체언론사</a>
+								</div>
+								<div class="set-area">
+									<a href="#" class="btn-set"><i class="icon-list img1"></i></a>
+									<a href="#" class="btn-set"><i class="icon-tile img1"></i></a>
+									<a href="#" class="btn-set"><i class="icon-set img1"></i></a>
+								</div>
+							</div>
+							<div class="newsstand-view-container clearfix">
+								<div class="group-news">
+									<a href="" roel="button" class="news-btn-prev"><i class="icon-btn img1"></i></a>
+									<a href="" roel="button" class="news-btn-next"><i class="icon-btn igm1"></i></a>
+									<div class="news-page">
+										<div style="width: 750px; float: left; display: none;">
+											<div class="tile-view">
+												<div class="frame-area">
+													<i class="line to-right1"></i>
+													<i class="line to-right2"></i>
+													<i class="line to-right3"></i>
+													<i class="line to-bottom1"></i>
+													<i class="line to-bottom2"></i>
+													<i class="line to-bottom3"></i>
+													<i class="line to-bottom4"></i>
+													<i class="line to-bottom5"></i>
+												</div>
+											</div>
+										</div>
+											<div class="thumb-area">
+												<div class="thumb-box">
+													<a href="#" class="thumb">
+														<img src="https://s.pstatic.net/static/newsstand/2020/logo/light/0604/314.png" height="20" alt="">
+													</a>
+													<a href="#" class="thumb">
+														<img src="https://s.pstatic.net/static/newsstand/2020/logo/light/0604/368.png" height="20" alt="">
+													</a>
+													<a href="#" class="thumb">
+														<img src="https://s.pstatic.net/static/newsstand/2020/logo/light/0604/005.png" height="20" alt="">
+													</a>
+													<a href="#" class="thumb">
+														<img src="https://s.pstatic.net/static/newsstand/2020/logo/light/0604/376.png" height="20" alt="">
+													</a>
+													
+												</div>
+											</div>
+									</div>
+								</div>
+							</div>
+						</div>
+
+					</div>
+					<div class="box-body-right"> <!--오른쪽 박스-->
+						<!-- 오른쪽 첫번째 박스-->
+						<div class="main-login-box">
+							<div class="login-msg">
+								<p>네이버를 더 안전하고 편리하게 이용하세요</p>
+							</div>
+							<a href="#" class="link-login"> 
+							<i class="icon-naver img1"></i>로그인</a>
+							<div class="sub-area">
+								<div class="lookbox clearfix">
+									<a href="" class="id">
+										<i class="icon-lock img1"></i>&nbsp 아이디&nbsp;
+									</a> 
+									<a href="" class="pw">비밀번호찾기</a>
+									<div class="join">
+										<a href="" class="link-join">
+										<i class="icon-join img1"></i>회원가입</a>
+									</div>
+								</div>
+							</div>
+
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<footer class="container-footer"></footer>
+	</div>
+	</div>
+	</div>
+
+
+
+
+
+</body>
+
+</html>

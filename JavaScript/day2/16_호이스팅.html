@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Document</title>
+</head>
+<body>
+	<script>
+		/* <호이스팅>
+		- js가 실행전, var로 된 변수나 함수들을 위로 끌어 올리는 작업
+		- let 변수는 호이스팅이 일어나지 않음
+		*/
+		x = 10;
+		var x;
+		console.log(x); // 결과 : 10
+
+		y =20;
+		let y ;
+		console.log(y); //결과 : 오류 -> let은 호이스팅이 일어나지 않는다.
+
+		/*
+		호이스팅에 의해 function test1(){console.log('hi');} 가 제일 위로 올라가고 test1()이 실행된다
+		*/
+		test1();
+		function test1(){console.log('hi');}
+
+
+		/*
+		var test2; 
+		test2();
+		test2 = function(){
+			console.log('hi');
+		}
+		*/
+		
+		test2(); //에러발생
+		var test2 = function(){
+			console.log('hi');
+		}
+	</script>
+</body>
+</html>

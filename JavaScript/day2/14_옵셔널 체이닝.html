@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Document</title>
+</head>
+<body>
+<script>
+	/*
+	let 객체 ={
+		속성1 : 값,
+		속성2 : 값,
+		속성3 : {
+			속성31 : 값,
+			속성32 : 값,
+		}
+	}
+	객체.속성3.속성31 = 새로운값;
+	객체.속성4.속성41 = 새로운값;
+	*/ 
+	let user ={
+		id : '123',
+		pw : '345',
+		authoriry :{
+			name : 'admin',
+			value : 10
+		}
+	}
+	user.authoriry.name = 'user';
+	user.authoriry.value =9;
+	user.authoriry.code = 7; //있는 속성에 추가한거기 때문에 문제가 안됨.
+	user?.name?.firstName = '김'; //없는속성인데 추가하려고 해서 문제가 생김. 해결하려면 ? 써주면 됨.
+
+</script>
+</body>
+</html>

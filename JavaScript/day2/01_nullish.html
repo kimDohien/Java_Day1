@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>nullish예제</title>
+</head>
+<body>
+	
+	<script>
+		let age =20;
+		console.log(`제 나이는 ${age??26}살 입니다`); 
+		//let age=20; 20으로 초기값을 해주면 20이 들어간다.
+		
+		age=undefined;
+		console.log(`제 나이는 ${age??26}살 입니다`); 
+
+		age=null
+		console.log(`제 나이는 ${age??26}살 입니다`); 
+		//초기화를 안하면 undefined가 들어감. nullish로 되어서 26이 들어감.
+		
+	</script>
+	
+</body>
+</html>

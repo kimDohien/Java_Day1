@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>함수 표현식 예제</title>
+</head>
+<body>
+	<SCript>
+		/*
+		함수 표현식
+		let 함수명 = function(변수1,변수2,...){
+			구현;
+		}
+
+		함수 표현식 특징
+		- 함수 표현식 이 선언되기 전에 호출이 되면 에러가 발생
+		- 함수 선언식 은 선언되기 전 호출되 도 동작
+		*/
+
+		// sayHelo(); 선언되기 전 호출->에러발생
+		let sayHelo = function(){
+			console.log('Hello');
+		};
+		sayHelo();
+
+		//이렇게도 표현 가능
+		function sayName(){
+			console.log('홍길동');
+		}
+		let sayName2 = sayName;
+		sayName2();
+		
+	</SCript>
+</body>
+</html>

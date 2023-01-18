@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Document</title>
+</head>
+<body>
+	<script>
+		/*자바스크립에서는 다양한 배열들을 추가할수 있다.
+		push(data) : 배열 끝에 data추가
+		unshift(data) : 배열 앞에 data추가
+		pop() : 배열 마지막 요소를 제거 후 리턴
+		shift() : 배열 첫번째 요소를 제거 후 리턴
+		*/
+
+		let arr = [];
+		arr.push(1); //[1] 빈 배열에 1을 넣으니 1이 들어감
+		arr.unshift('2'); // 1이 넣어져 있었으니 ['2',1]
+		arr.push(true); // ['2',1,true]
+		arr.unshift({name:'김도현'}); //[{name:'김도현'},'2',1,true]
+		console.log(arr);
+		
+		console.log(arr.shift()); //첫번째인 name을 제거
+		console.log(arr.pop()); // 마지막번째인 true 제거
+		
+
+	</script>
+</body>
+</html>

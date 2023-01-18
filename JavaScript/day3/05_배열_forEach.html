@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Document</title>
+</head>
+<body>
+	<script>
+
+			let arr =['a',1,'bcd'];
+			arr.forEach(function(item,index,arr){
+				//index.item을 이용해출력
+				console.log(`arr[${index}] =${item}`);
+				//arr.index를 이용해 출력
+				console.log(`arr[${index}] =${arr[index]}`);
+			});
+			//forEach를 이용할때 반드시 매개변수 3개를 다쓸필요는 없다.
+			arr.forEach(function(item,index){
+				console.log(`arr[${index}] =${item}`);
+			})
+			
+			//번지필요없고 값만 출력 . 최소 item은 필요하다.
+			arr.forEach(function(item){
+				console.log(`${item}`);
+			})
+
+			//위 코드를 에로우함수를 이용하여 쓸수 있다.
+			arr.forEach(item=>{ 
+				console.log(`${item}`);
+			})
+
+	</script>
+</body>
+</html>

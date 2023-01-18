@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Document</title>
+</head>
+<body>
+	<h1 style="color : #ff6450;">테스트</h1>
+	<script>
+		let num1 = 0xff; //16진수=> 255
+		console.log(`0xff = ${num1}`);
+		let num2 = 0o70; // 8진수=> 56
+		console.log(`0o70 = ${num2}`);
+		let num3 = 0b111; // 2진수=> 7
+		console.log(`0b111 = ${num3}`);
+
+		let num4 = 1e3; // 1000
+		console.log(`1e3 = ${num4}`);
+		let num5 = 1e-3; // 1/1000 =>0.001
+		console.log(`1e-3 = ${num5}`);
+
+		//<숫자를 문자열로 바꾸는 toString> 색상을 문자로 바꾸는 예제
+		let red = 255;
+		let green = 100;
+		let blue = 80;
+		let color = `#${red.toString(16)}${green.toString(16)}${blue.toString(16)}`;
+		console.log(color);
+
+		//<소수점>
+		//소수점 계산지 100% 정확하지 않기 때문에 특정 소수점 자리까지 확인하는것이 좋을수 있다.
+		let a= 0.1, b= 0.2;
+		console.log(`(${a}+${b}) : ${(a+b)==0.3}`); //false
+		console.log(`(${a}+${b}).toFixed(6)==0.3 : ${(a+b).toFixed(6)==0.3}`); //false
+
+		//<isFinite>
+		//isFinite : 값 / 변수가 유한수인지 아닌지를 확인하는 함수
+		console.log(` isFinite(1/0) : ${isFinite(1/0)}`); //False
+		console.log(` isFinite(1000000) : ${isFinite(1000000)}`); //True
+		console.log(` isFinite(1e500) : ${isFinite(1e500)}`); //False
+
+		//<object.is>
+		console.log(`+'abc' === NaN : ${+'abc' === NaN}`); //NaN
+		console.log(`object.is(+'abc',NaN) : ${object.is(+'abc',NaN)}`); //True
+		console.log(`+0 == -0 : ${+0 == -0}`);
+		console.log(`object.is(+0 , -0) : ${object.is(+0,-0)}`);
+		</script>
+</body>
+</html>

@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Document</title>
+</head>
+<body>
+	<script>
+		let str = 'abc,def,ghi';
+		/* str에서 , 가 몇개 있는지 확인하는 코드 작성*/
+		//방법1
+		console.log(str.split(',').length-1); 
+		
+		//방법2
+		let index=-1, count= 0;
+		do{
+			index = str.indexOf(',',index+1); //0번지부터 시작해서 , 를 찾는다
+			count = index >= 0 ? count +1 : count;
+		}while(index != -1);
+		console.log(`${str}에서 ,의 개수 : ` + count);
+
+		/*,를 기준으로 문자열들을 출력하는 코드를 작성*/
+		//방법1
+		index=-1
+		let start= 0 , end= start+1; //+1을 하는이유는 subString은 마지막 번지를 추출하지 않기때문
+		do{
+			start = index+1; 
+			index = str.indexOf(',',index+1); //0번지부터 시작해서 , 를 찾는다
+			end = index != -1 ? index : str.length;
+			let word = str.substring(start, end);
+			console.log(`${str} 에서 , 기준으로 문자 출력 : ` +word);
+		}while(index != -1);
+	
+		//방법2
+		//split : 구분자를 기준으로 문자열을 추출하여 배열을 생성
+		let arr = str.split(',');
+		for(let tmp of arr){
+			console.log(tmp);
+		}
+	</script>
+</body>
+</html>

@@ -14,7 +14,20 @@
 		*/
 		console.log('6' / 2); //3
 		console.log('6a' /2); //NaN
-		console.log('6' /2); 
+
+		console.log(`'6' / 2 =${'6' / 2}`);
+		console.log(`'6a' / 2 =${'6a' / 2}`);
+		console.log(`'6' - 2 =${'6' - 2}`);
+		console.log(`'6' * 2 =${'6' * 2}`);
+		console.log(`'6' ** 2 =${'6' ** 2}`);
+		
+		//+연산자는(덧세아님) 피연산자를 숫자로 변환 
+		let num1 ='12', num2 ='34';
+		console.log(`'12'+'34' = ${'12'+ '34'}`); //1234
+		//아래 예제는 유용하게 쓰일 수 있음
+		console.log(`'12'+'34' = ${+'12'+ +'34'}`); //46
+		console.log(`'12'+'34' = ${Number('12')+ +Number('34')}`); //정석 46 
+
 		
 		
 	</script>

@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>스타일을 스크립에서 수정</title>
+	<style>
+		.box{
+			width: 100px; height: 100px; background-color: yellow; font-size: 20px;
+			text-align: center; line-height: 100px; margin-bottom: 10px;
+		}
+		.box1{color: red;}
+		.box2{color: aqua;}
+	</style>
+</head>
+<body>
+	<div class="box box1">1</div>
+	<div class="box box2">2</div>
+	<script>
+		/*
+		elem.className	: 요소의 클래스명 전체를 가져옴 (덮어씀)
+		elem.className =’값’ :	요소의 클래스명 전체를 ‘값’ 으로 수정
+		elem.classList.add(’클래스명’)	요소의 클래스를 추가(있으면 추가 안함)
+		elem.classList.remove(’클래스명’) 	요소의 클래스를 제가
+		elem.classList.toggle(’클래스명’)	요소의 클래스에 ‘클래스명’이 있으면 삭제, 없으면 추가
+		*/
+		let box1 = document.querySelector('.box1'); //box1이라는 클래스를 가져와서 box1이라는 변수에 저장
+		let box2 = document.querySelector('.box2'); //box2라는 클래스를 가져와서 box2라는 변수에 저장
+		//클래스 제어
+		box1.className = 'box'; //빨간글자가 검게 변함 => box1의 요소의 클래스명을 box로 덮어씀
+		box1.classList.add('box1'); //글자색이 다시 빨간색으로 돌아옴 =>box1추가
+		box1.classList.add('box2'); //글자색이 aqua색으로 바뀜 =>box2추가
+		box1.classList.remove('box2');//아쿠아 삭제 -> 빨간색으로 돌아옴 =>box2삭제
+		box1.classList.toggle('box2'); //box2가 토글이 추가 되어서 글자색 아쿠아로됨
+		box1.classList.toggle('box2'); //box2가 토글이 삭제 되어서 글자색이 빨간색으로 돌아옴
+
+		/*
+		elem.style.스타일명 = ‘값’ : 해당 스타일을 덮어씀
+		<스타일명>
+		• color 처럼 한 단어인 경우 그대로 사용
+		• font-size처럼 -로 되어있는 경우 - 제거 후 카멜표기법 ⇒fontSize
+		*/
+		box1.style.fontSize ='30px'; //inline속성으로 들어감. 즉 우선순위가 높다는 뜻
+	</script>
+</body>
+</html>

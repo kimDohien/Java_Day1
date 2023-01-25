@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Document</title>
+	<style>
+		.bg-yellow{background-color: yellow;}
+		.bg-red{background-color: red;}
+		.bg-green{background-color: green;}
+
+	</style>
+</head>
+<body>
+	<ul id="list1">
+		<li onclick="changeBackGround1()">1</li>
+		<li onclick="changeBackGround2()">2</li>
+		<li onclick="changeBackGround3()">3</li>
+	</ul>
+	<ul id="list2">
+		<li onclick="changeBackgroundColor(1)">1</li>
+		<li onclick="changeBackgroundColor(2)">2</li>
+		<li onclick="changeBackgroundColor(3)">3</li>
+	</ul>
+	<ul id="list3">
+		<li>1</li>
+		<li>2</li>
+		<li>3</li>
+	</ul>
+	<script>//방법1
+		function changeBackGround1(){
+			// document.querySelector('#list1>li:nth-child(1)').classList.toggle('bg-yellow'); 밑코드를 한줄로 썼을때
+			let li = document.querySelector('#list1>li:nth-child(1)');
+			li.classList.toggle('bg-yellow');
+		}
+		function changeBackGround2(){
+			let li = document.querySelector('#list1>li:nth-child(2)');
+			li.classList.toggle('bg-red');
+		}
+		function changeBackGround3(){
+			let li = document.querySelector('#list1>li:nth-child(3)');
+			li.classList.toggle('bg-green');
+		}
+	</script>
+	<script>//방법2
+		function changeBackgroundColor(index){
+			let li = document.querySelectorAll('#list2>li');
+			list[index-1].classList.toggle('bg-yellow');
+
+			// let li = document.querySelectorAll(`#list2>li:nth-child(${index})`);
+			// li.classList.toggle('bg-yellow');
+		}
+	</script>
+	<script>
+		let list3 = document.querySelectorAll('#list3>li');
+		list3.forEach((item)=>{
+			item.onclick=()=>{
+				item.classList.toggle('bg-yellow');
+			}
+		});
+	</script>
+</body>
+</html>

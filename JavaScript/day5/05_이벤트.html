@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Document</title>
+</head>
+<body>
+	<input type="text" onclick="alert('알림창1 선택');">
+	<input type="text" id="text2">
+	<script>
+		let text2 = document.querySelector('text2'); //여기까지 하면 두번째 인풋을 선택해도 알림창이 안나타난다
+		text2.onclick = function(){
+			alert('알림창2 선택')
+		}
+		text3.onclick = ()=>alert('알림창3 선택'); //에로우 함수 이용
+		//onclick은 속성이기때문에 여러개 존재할 경우 덮어쓰기된다.
+		
+	</script>
+</body>
+</html>

@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Document</title>
+	<style>
+		.container{width: 622px;}
+		.container::after{
+			content: ''; clear: both; display: block;
+		}
+		.btn-prev ,.btn-next{
+			border: 1px solid black; height: 45px; float: left; width: 48px;
+			line-height: 48px; text-align: center; text-decoration: none; color: black;
+		}
+		.list-menu{
+			border: 1px solid black; list-style: none; padding: 0; margin: 0 10px; float: left;
+		}
+		.item-menu{
+			width: 100px; float: left; height: 48px; text-align: center; line-height: 48px;
+		}
+		.item-menu~.item-menu{
+			border-left: 1px solid black; margin-left:-1px ; 
+		}
+		.link-menu{
+			display: block; text-align: center; height: 100%; width: 100%;
+			font-size: 24px; text-decoration: none; color: black; 
+		}
+		.item-menu.selected{background-color: aqua;}
+		.list-box{
+			width: 500px; list-style: none; padding: 0; margin: 10px 0 auto;
+			border: 1px solid black; height: 500px; overflow: hidden;
+		}
+		.item-box{
+			width: 100%; height: 100%;background-color: yellow;
+		}
+		
+	</style>
+</head>
+<body>
+	<div class="container">
+		<a href="#" class="btn-prev" onclick="moveItem('prev')">&lt;</a>
+		<ul class="list-menu" id="menu">
+			<li class="item-menu selected">
+				<a href="#" class="link-menu">엔터</a>
+			</li>
+			<li class="item-menu">
+				<a href="#" class="link-menu">스포츠</a>
+			</li>
+			<li class="item-menu">
+				<a href="#" class="link-menu">자동차</a>
+			</li>
+			<li class="item-menu">
+				<a href="#" class="link-menu">웹툰</a>
+			</li>
+			<li class="item-menu">
+				<a href="#" class="link-menu">패션</a>
+			</li>
+		</ul>
+		<a href="#" class="btn-next" onclick="moveItem('next')">&gt;</a>
+	</div>
+	<div class="container">
+		<ul class="list-box">
+			<li class="item-box selected" >엔터</li>
+			<li class="item-box" hidden>스포츠</li>
+			<li class="item-box" hidden>자동차</li>
+			<li class="item-box" hidden>웹툰</li>
+			<li class="item-box" hidden>패션</li>
+		</ul>
+	</div>
+
+	<script>
+		let selectedItem =document.querySelector('.item-menu.selected');//전역변수, 초기에 한번 실행
+		function moveItem(state){
+			selectedItem.classList.remove('selected');//selected제거
+			if(state =='prev' && selectedItem.previousElementSibling)
+				selectedItem = selectedItem.previousElementSibling;
+			else if(state =='next' && selectedItem.nextElementSibling)
+				selectedItem = selectedItem.nextElementSibling;
+			selectedItem.classList.add('selected');
+			selectedItem.click(); //메뉴선택했을때 클릭
+		}
+
+		//클릭했을때 배경 변하게
+		let list1 = document.querySelectorAll('#menu>li');
+		list1.forEach((item,index)=>{ //밑에 박스 인덱스 추가
+			item.onclick=()=>{
+				list1.forEach((item)=>{
+					item.classList.remove('selected')
+				});
+				item.classList.add('selected');
+				selectBox(index);//밑에 박스 인덱스 추가
+			}
+		})
+
+		//선택했을 때 밑에 박스 바뀌게
+		function selectBox(index){
+		document.querySelectorAll('.item-box').forEach((item,i)=>{ //i는 쿼리셀렉터로 요소를 하나씩 꺼냈을때 요소번지
+			if(index==i)
+				item.hidden=false;
+			else
+				item.hidden = true;
+		});
+		}
+		
+		
+	</script>
+</body>
+</html>

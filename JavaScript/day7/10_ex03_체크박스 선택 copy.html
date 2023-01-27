@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Document</title>
+	<script src="../js/jquery.min.js"></script>
+</head>
+<body>
+	<label>
+		<input type="checkbox" name="fruit" value="바나나" >바나나
+	</label>
+	<label>
+		<input type="checkbox"  name="fruit" value="사과" >사과
+	</label>
+	<label>
+		<input type="checkbox" name="fruit" value="오렌지" >오렌지
+	</label>
+	<br>
+	<button class="btn">클릭</button>
+<script>
+	/*
+	let list = $('[name=fruit]');
+
+	//방법1
+	for(let i= 0; i< list.length ;i++)
+	console.log(list.eq(i).prop());
+		
+	//방법2	
+	list.each(function(){
+		console.log(this.val());
+	})
+	*/
+	
+	$('.btn').click(()=>{
+		/*
+		$('[name=fruit]').each(function(){
+			if($(this).prop('checked')){
+				console.log($(this).val());
+			}
+		});
+		*/
+		$('[name=fruit]:checked').each(function(){
+			alert($(this).val());
+		})
+	});
+
+
+</script>
+</body>
+</html>

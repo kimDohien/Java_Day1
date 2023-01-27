@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Document</title>
+	<script src="../js/jquery.min.js"></script>
+	<style>
+		.box{
+			width: 100px; height: 100px; background-color: gray;
+			position: relative; text-align: center; 
+		}
+	</style>
+</head>
+<body>
+	<div>
+		<button class="btn">버튼</button>
+	</div>
+	<div class="box">v- -v</div>
+	<script>
+		/*
+		let a =[];//배열
+		let b ={
+			name1 : '값1',
+			name2 : '값2' 
+		};//객체
+		/*
+		/*
+		$(selector).animate({params},speed,callback);
+			- {params} : 애니메이션을 적용시킬 css속성과 값들로 이루어진 객체
+				css속성명에  -가 있는 경우에는 -를 빼고 카멜표기법 or '속성명'으로 작성
+			- speed : 애니메이션 실행 시간. 단위(ms)
+			- callback : 애니메이션 종료 후 실행할 함수
+		*/
+		$('.btn').click(()=>{
+			$('.box').animate({
+				//애니메이트할 속성들..작성
+				// marginLeft : '200px' or 'margin-left' :'200px'
+				left : '200px'
+			}, 1000,function(){ //속도1000,콜백
+				$(this).animate({
+					left : 0
+				},1000)//속도1000
+			});
+
+
+
+		let cssBefore ={
+			marginLeft : 0
+		};
+		let cssAfter ={
+			marginLeft : '100px'
+		};
+
+		$('.box1').animate(cssAfter,1000,function(){
+			$(this).animate(cssBefore,1000);
+		});
+
+	});	//중괄호를 안쓰는때 : 한줄인 경우. (여러줄일경우는 중괄호 필)
+	</script>
+</body>
+</html>

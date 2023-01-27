@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>조상 탐색 예제</title>
+	<script src="../js/jquery.min.js"></script>
+	<style>
+		
+		div{ /* 부모,자식 시작지점이 같아서 패딩을 줘야한다.  */
+			padding: 20px; border: 3px solid black;
+		}
+	</style>
+</head>
+<body>
+	<div class="container">
+		<div class="box">
+			<div class="box-in">
+				<ul>
+					<li>1</li>
+					<li>2</li>
+					<li>3</li>
+				</ul>
+			</div>
+		</div>
+	</div>
+	<div class="container">
+		<div class="box">
+			<div class="box-in">
+				<ul class="list-menu">
+					<li>1</li>
+					<li>2</li>
+					<li>3</li>
+				</ul>
+			</div>
+		</div>
+	</div>
+	<script>
+		/*
+		$('선택자').parent() : 요소의 부모 요소를 선택
+		$('선택자').parent('선택자2') : 요소의 부모 요소가 선택자2 와 같은 요소를 선택
+		$('선택자').parents() : 요소의 모든 조상요소들 을 선택
+		$('선택자').parents('선택자') : 요소의 모든 조상요소들 중 선택자와 일치하는 요소들만 선택(지정한 선택자들만 선택)
+		$('선택자').parentsUntil(’선택자’) : 요소의 조상들중 선택자와 일치하는 조상 전 까지만 선택
+		*/ 
+
+		// $('li:first-child').parent('').css({'background-color' : 'red'}); //li첫번째 태그의 부모 전체 배경을 레드로
+		// $('li:first-child').parent('.list-menu').css({'background-color' : 'red'}); //ul태그에 list-menu가 있는 애들만 배경을 레드로
+		// $('li:first-child').parents('').css({'border-color' : 'green'}); //모든 조상들의 테두리색이 바뀜
+		// $('li:first-child').parents('.box').css({'border-color' : 'green'}); //클래스 이름이.box인 요소만 테두리색 바뀜
+		$('li:first-child').parentsUntil('.box-in').css({'background-color' : 'blue'}); //선택자box-in 전(list-menu)까지 배경색 지정
+	</script>
+</body>
+</html>

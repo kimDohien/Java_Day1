@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>자손 탐색 예제</title>
+	<script src="../js/jquery.min.js"></script>
+	<style>
+		*{padding:20px; border: 1px solid black;}
+		div{margin-bottom: 10px;}
+	</style>
+</head>
+<body>
+	<div class="container">
+		<div class="box1">
+			<ul class="list-box">
+				<li>1</li>
+			</ul>
+		</div>
+		<div class="box2">
+			<ul>
+				<li>2</li>
+			</ul>
+		</div>
+		<div class="box3">
+			<ul>
+				<li class="item-box">3</li>
+			</ul>
+		</div>
+	</div>
+
+	<script>
+		/*
+	$('선택자').children(’선택자’) 
+	- 요소들의 자식 요소들 중 선택자 와 일치하는 요소들을 선택
+	- 선택자를 생략하면 모든 자식 요소들 선택
+
+	$('선택자').find(’선택자’) 
+	- 요소들의 자손(자식+자손+증손자..) 요소들 중 선택자 와 일치하는 요소들을 선택
+	- 선택자 는 필수
+
+	둘의 차이는 깊이가 다름
+		*/
+		// $('.container').children().css({'border-color' : 'blue'});
+		// $('.container').children('.box1').css({'border-color' : 'blue'}); //box1에 있는 자식들만 색 변함
+		$('.container').find('.item-box').css({'background-color':'yellow'});
+		$('.container').find('.list-box').css({'background-color':'pink'});
+
+	</script>
+</body>
+</html>

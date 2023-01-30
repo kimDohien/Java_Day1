@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Document</title>
+	<script src="../js/jquery.min.js"></script>
+	<style>
+		.box{width: 100px; height: 50px; border: 1px solid black; display: none; margin-top: 10px;}
+	</style>
+</head>
+<body>
+	<!-- 버튼을 생성하고, 버튼을 클릭했을 때 박스가 보이도록 
+	
+	-->
+	<button class="btn">button</button>
+	<div class="box"></div>
+
+	<script>
+		$('.btn').click(function(){
+			let text ='hello';
+			$('.box').text(text);
+			$('.box').show();
+		});
+	</script>
+</body>
+</html>

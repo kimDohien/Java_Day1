@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Document</title>
+	<script src="../js/jquery.min.js"></script>
+</head>
+<body>
+	<input type="text">
+	<br>
+	<input type="checkbox" id="agree">약관에 동의합니다.
+	<br>
+	<div style="height : 1000px;"></div>
+	<button class="btn-submit">회원가입</button>
+	<script>
+
+	/*
+	Focus Event
+	- 요소를 클릭하거나 탭키 를 이용하여 요소가 선택된 경우 focus이벤트 발생
+	*/
+	$('input').focus(function(){
+		$(this).css('background','red');
+	});
+
+
+	/*
+	Blur Event
+	- focus된 요소가 focus가 해제될 때 blur이벤트 발생
+	*/ 
+	$('input').blur(function(){
+		$(this).css('background','white');
+	});
+
+
+	//체크박스를 체크 안하고 버튼을 누르면 약관체크하라는 곳으로 이동
+	$('.btn-submit').click(function(){
+		if(!$('#agree').prop('checked')){ //true가 아니면
+			$('#agree').focus();
+		}
+	})
+	</script>
+</body>
+</html>

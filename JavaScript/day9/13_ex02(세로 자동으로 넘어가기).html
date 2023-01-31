@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Document</title>
+	<script src="../js/jquery.min.js"></script>
+	<style>
+		*{padding: 0; margin: 0;}
+		a{text-decoration: none;}
+		ul{list-style: none;}
+		.container{
+			width:300px ;
+			height: 50px; margin-top: 30px; border: 3px solid black; 
+			overflow: hidden;
+		}
+		.list-news{
+			width: 500%;
+		}
+		.item-news{
+			height: 50px; line-height: 50px; padding-left:20px ;
+			background-color: aqua;  float: left; width: 20%;
+			box-sizing: border-box;
+		}
+		.item-news:nth-child(2n){
+			background-color: lightcoral;
+		}
+
+		.list-news::after{
+			content: ''; display: block; clear: both;
+		}
+	</style>
+</head>
+<body>
+	<div class="container">
+		<ul class="list-news">
+			<li class="item-news">
+				<a href="#" class="link-news">1</a>
+			</li>
+			<li class="item-news">
+				<a href="#" class="link-news">2</a>
+			</li>
+			<li class="item-news">
+				<a href="#" class="link-news">3</a>
+			</li>
+			<li class="item-news">
+				<a href="#" class="link-news">4</a>
+			</li>
+			<li class="item-news">
+				<a href="#" class="link-news">5</a>
+			</li>
+		</ul>
+		</div>
+		<script>
+
+			let news = newsInterval();
+
+			//1.hover이벤트 등록
+			$('.container').hover(function(){ //ul태그까지는 가능 but li태그는 불가
+				//마우스가 요소 안으로 들어오면
+				//애니메이션이 진행중인 setInterval를 해제 =>clearInterval
+				clearInterval(news);},function(){
+				
+				//마우스가 요소를 빠져나가면
+				//setInterval를 통해 애니메이션이 진행되도록 작업
+				news = newsInterval();
+				
+			});
+
+			function newsInterval(){ //mouseleve에 대한 function
+				return setInterval(function(){
+				if(!$('.item-news').first().is(':animated')){
+				$('.item-news').first().animate({
+				marginLeft : '-=300px'
+				},1300,function(){
+					$(this).detach().appendTo('.list-news').removeAttr('style') 
+				});
+				}
+			},2000);
+			}
+			
+		
+		</script>
+</body>
+</html>

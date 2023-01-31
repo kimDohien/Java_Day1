@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Document</title>
+	<script src="../js/jquery.min.js"></script>
+</head>
+<body>
+	<button class="btn">클릭</button>
+	<div class="box">
+		<p>안녕</p>
+		<p class="title">김도현</p>
+	</div>
+	<hr>
+
+	<script>
+		$('.btn').click(function(){
+		let obj =	$('.title').detach();
+
+		//$('hr').after(obj);
+		// $('body').append(obj);
+		obj.appendTo('body');
+		//위 세가지 결과값은 같음. 떼었다가 다른곳 붙일때 appendTo, prependTo를 많이 이용
+		})
+	</script>
+</body>
+</html>

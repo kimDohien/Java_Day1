@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Document</title>
+	<script src="../js/jquery.min.js"></script>
+</head>
+<body>
+	<input type="text" name="search">
+	<select name="fruit" >
+		<option value="banana">바나나</option>
+		<option value="orange">오렌지</option>
+		<option value="apple">애플</option>
+	</select>
+	<script>
+		$('[name=search]').change(function(){
+			alert('입력창 내용이 수정됐습니다.')
+		});
+
+		$('[name = fruit]').change(function(){
+			alert('선택창 내용이 수정됐습니다');
+		});
+	</script>
+</body>
+</html>

@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Document</title>
+	<!-- 플러그인 사용할때 script순서 중요. -->
+	<script src="../js/jquery.min.js"></script>
+	<script src="../js/jquery.validate.min.js"></script>
+	<script src="../js/additional-method.min.js"></script>
+	<style>
+		.form{
+			border: 2px solid black;
+			width: 300px; height: 400px; text-align: center;
+		}
+		.title{
+			text-align: center;
+		}
+		[name=id] , [name=pw] , [name=pw2]{
+			line-height: 30px; margin-bottom: 2px;
+			border-radius: 5px; border: 1px solid grey;
+		}
+		.btn{
+			margin-top: 5px; height: 30px;
+			border-radius: 5px; border: 1px solid gray;
+			cursor: pointer; 
+		}
+		.error{
+			color: red;margin-bottom: 10px; text-size-adjust: 10;
+		}
+	</style>
+</head>
+<body>
+	<form action="" method="get" class="form">
+		<h1 class="title">회원가입</h1>
+		<input type="text" placeholder="ID" name="id"><br>
+		<label for="id" class="error" id="id-error"></label>
+		<input type="password" placeholder="Password" name="pw" id="pw"><br>
+		<label for="pw" class="error" id="pw-error"></label>
+		<input type="password" placeholder="비밀번호 확인" name="pw2" ><br>
+		<label for="pw2" class="error" id="pw2-error"></label>
+		<div>
+			<label >
+		<!-- radio는 id를 똑같이 해줘야 둘중 하나만 선택됨 -->
+		<input type="radio" name="gender" value="남성">남성
+		<input type="radio" name="gender" value="여성">여성<br>
+		<label for="gender" class="error" id="gender-error"></label>
+			</label>
+		</div>
+		
+		<!-- button type을 지정하지 않으면 submit으로 지정됨. -->
+		<button type="submit" class="btn">회원가입</button>
+		
+	</form>
+
+	<script>
+	$(function(){
+    $("form").validate({
+        rules: {
+					id: {
+							required : true, //필수항목일때 true
+							minlength : 5,
+							maxlength : 13,
+							regex :/[a-zA-Z0-9!@#$%]{5,13}/ 
+							//통합으로 할때는 정규표현식에 최소,최대길이가 써있기때문에 위 코드를 지워도됨
+							//통합이 아닌경우에는 min,max,regex다 써줘야함
+					},
+					pw : {
+							required : true,
+							regex: /[a-zA-Z0-9]{8,20}/
+					},
+					pw2: {
+							equalTo :pw //비밀번호에 id지정해줘야 equalTo 사용가능
+					},
+					gender: {
+							required : true
+					}
+
+        },
+        //규칙체크 실패시 출력될 메시지
+        messages : {
+            id: {
+                required : "필수로입력하세요",
+                minlength : "아이디는 5-13자, 영문 , 숫자만 가능"
+            },
+            password: {
+                required : "필수로입력하세요",
+                regex : "비번은 8~20자, 영문, 숫자, !@#$%만 가능"
+            },
+            pw2: {
+                equalTo : "비밀번호가 일치하지 않습니다."
+            },
+           gender :{
+								required : "성별을 선택해 주세요"
+					 }
+        },
+				submitHandler : function(form){ //회원가입 마지막 확인
+					alert('전송 전 마지막 확인');
+					return flase;
+				}
+    });
+})
+$.validator.addMethod(
+    "regex",
+    function(value, element, regexp) {
+        var re = new RegExp(regexp);
+        return this.optional(element) || re.test(value);
+    },
+    "Please check your input."
+);
+	</script>
+</body>
+</html>

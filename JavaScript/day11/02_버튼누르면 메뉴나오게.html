@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Document</title>
+	<script src="../js/jquery.min.js"></script>
+	<script src="../js/jquery.validate.min.js"></script>
+	<script src="../js/additional-method.min.js"></script>
+<style>
+	.main-box{
+		border: 2px solid black; width: 500px; height: 300px;
+		padding: 5px 5px;
+	}
+	.btn{
+		width: 50px; height: 50px; 
+	}
+	.menu-box{
+		border: 2px solid blue; width: 200px; height: 300px;
+		box-sizing: border-box; float: right; padding: 5px 5px; 
+		display: none;
+	}
+	.btn2{
+		float: right; width: 30px; height: 30px; color: red;
+		cursor: pointer;
+	}
+</style>
+</head>
+<body>
+	<div class="main-box">
+		<button class="btn">button</button>
+		<div class="menu-box">
+			<button class="btn2">X</button>
+		</div>
+	</div>
+	<script>
+		//방법1
+		$('.btn').click(()=>{
+			$('.menu-box').show()
+		});
+		$('.btn2').click(()=>{
+			$('.menu-box').hide()
+		});
+
+		/*방법2
+		$('.btn').click(function(){
+			$('.menu-box').show();
+		});
+		$('.btn2').click(function(){
+			$('.menu-box').hide();
+		});
+		*/
+	</script>
+	
+</body>
+</html>

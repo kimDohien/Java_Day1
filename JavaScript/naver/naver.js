@@ -22,6 +22,11 @@ $(function(){
 		rollingLeft2 = rollingTop(rollingObjLeft2);
 	});
 	
+	//----------------------------------
+
+
+	
+	
 });
 //페이지네이션 버튼 이벤트
 $(function(){
@@ -44,6 +49,102 @@ $(function(){
 		boxShopIn.find('.current-page').text(curPage);
 	});
 });
+
+//왼쪽 두번째 뉴스 리스트 버튼 관리
+$(function(){
+	//2.이전 버튼은 첫번째 list-press가 아닌 경우에만 활성화
+	selectNewList($('.box-body-left2 .list-press').eq(3))
+
+	$('.box-body-left2 .btn-prev').click(function(e){
+		e.preventDefault(); //상단으로 올라가는거 막음
+		let obj = $('.box-body-left2 .list-press .selected');
+		if(obj.prev().length !=0){
+			selectNewList(obj.prev());
+		}
+	});
+	
+	//3.다음 버튼은 마지막 llist-press가 아닌 경우에만 활성화
+	$('.box-body-left2 .btn-next').click(function(e){
+		e.preventDefault(); //상단으로 올라가는거 막음
+		let obj = $('.box-body-left2 .list-press. selected');
+		if(obj.next().length ==0 || !obj.next().hasClass('list-press')){
+			return;
+			selectNewList(obj.next());
+		}
+	});
+});
+
+function selectNewList(el){
+	//1. 초기에 첫번째 list-press를 제외한 나머지 list-press안보이게 감춤
+	$('.box-body-left2 .list-press').removeClass('selected').hide();
+	el.show();
+	el.addClass('selected')
+	if(el.prev().length ==0 ){ //앞에 요소가 없으면
+		$('.box-body-left2 .btn-prev').hide();
+	}else{
+		$('.box-body-left2 .btn-prev').show();
+	}
+	if(el.next().length == 0  || !el.next().hasClass('list-press')){ 
+		$('.box-body-left2 .btn-next').hide();
+	}else{
+		$('.box-body-left2 .btn-next').show();
+	}
+}
+
+//왼쪽 세번째박스 클릭했을 때 배경 바꾸기
+$(function(){
+	$('.box-body-left3 .box-menu .btn-menu').click(function(e){
+		e.preventDefault();
+		$('.box-body-left3 .box-menu .item-menu .btn-menu').attr('aria-selected',false);
+		$(this).attr('aria-selected',true);
+		if($(this).prev().length==0){
+			$('.box-body-left3 .btn-prev').hide();
+		}else{
+			$('.box-body-left3 .btn-prev').show();
+		}
+		if($(this).parent().next().length==0){
+			$('.box-body-left3 .btn-prev').hide();
+		}else{
+			$('.box-body-left3 .btn-prev').show();
+		}
+	})
+
+	$('.box-body-left3 .box-menu .btn-prev').click(function(e){
+		e.preventDefault();
+		let obj =$('.box-body-left3 .box-menu .item-menu .btn-menu').filter('[aria-selected=true]')
+		if(obj.parent().prev().length !=0)
+			obj.parent().prev().children().click();
+
+		if(obj.hasClass('living')){
+			obj.parents('.list-menu').animate({
+				marginLeft : '-185px'
+			},500);
+		}
+	});
+
+	$('.box-body-left3 .box-menu .btn-next').click(function(e){
+		e.preventDefault();
+		let obj =$('.box-body-left3 .box-menu .item-menu .btn-menu').filter('[aria-selected=true]')
+		if(obj.parent().next().length !=0)
+		obj.parent().next().children().click();
+
+		if(obj.hasClass('car')){
+			obj.parents('.list-menu').animate({
+				marginLeft : '0px'
+			},500);
+		}
+	})
+
+});
+
+//더보기란 
+$(function(){
+	$('.group-menu .btn-more').click(function(e){
+		e.preventDefault();
+		$(this).toggleClass('fold')
+	});
+});
+
 
 
 let liRight2 = '.box-body-right2 .item-stock';
@@ -106,3 +207,8 @@ function rollingTop(rollingObj){
 	return setInterval(moveTop,rollingObj.duration,rollingObj.liSelector, 
 		rollingObj.ulSelector, rollingObj.animationTime);
 }
+
+//---------------
+
+
+

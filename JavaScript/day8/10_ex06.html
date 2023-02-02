@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Document</title>
+	<script src="../js/jquery.min.js"></script>
+	<style>
+		.container{width: 630px;}
+		.container::after{
+			content: ''; clear: both; display: block;
+		}
+		.btn-prev ,.btn-next{
+			border: 1px solid black; height: 45px; float: left; width: 48px;
+			line-height: 48px; text-align: center; text-decoration: none; color: black;
+		}
+		.list-menu{
+			border: 1px solid black; list-style: none; padding: 0; margin: 0 10px; float: left;
+		}
+		.item-menu{
+			width: 100px; float: left; height: 48px; text-align: center; line-height: 48px;
+		}
+		.item-menu~.item-menu{
+			border-left: 1px solid black; margin-left:-1px ; 
+		}
+		.link-menu{
+			display: block; text-align: center; line-height: 48px;
+			font-size: 24px; text-decoration: none; color: black; 
+		}
+		.item-menu.selected{background-color: aqua;}
+	</style>
+</head>
+<body>
+	<div class="container">
+		<a href="#" class="btn-prev" >&lt;</a>
+		<ul class="list-menu" id="menu">
+			<li class="item-menu selected">
+				<a href="#" class="link-menu">엔터</a>
+			</li>
+			<li class="item-menu">
+				<a href="#" class="link-menu">스포츠</a>
+			</li>
+			<li class="item-menu">
+				<a href="#" class="link-menu">자동차</a>
+			</li>
+			<li class="item-menu">
+				<a href="#" class="link-menu">웹툰</a>
+			</li>
+			<li class="item-menu">
+				<a href="#" class="link-menu">패션</a>
+			</li>
+		</ul>
+		<a href="#" class="btn-next" >&gt;</a>
+	</div>
+
+	<script>
+	
+	
+	
+	
+	
+	// 다음 버튼 클릭 이벤트 등록
+	$('.btn-next').click(function(){
+		let curObj = $('.item-menu.selected');
+		// curObj.removeClass().$('.selected'); // 	현재 요소의 selected 클래스 제거
+		// $('.item-menu').removeClass('selected'); //모든 메뉴의 selected클래스 제거
+		// 	현재 요소의 다음 요소에 selected클래스 추가
+		
+		if(curObj.next().length !=0)
+			curObj = curObj.next();
+		
+	// seleectMenu(curObj); //클릭 처리 방법1
+		curObj.click(); //클릭 처리 방법2	
+	});
+	
+	
+	
+	// 이전 버튼 클릭 이벤트 등록
+	$('.btn-prev').click(function(){
+		let curObj = $('.item-menu.selected');
+		// 현재 요소에 selected 클래스 제거
+		// $('.item-menu').removeClass('selected'); 
+		// 	현재 요소의 이전 요소에 selected 클래스 추가
+		if(curObj.prev().length !=0)
+			curObj = curObj.prev();
+
+		// seleectMenu(curObj); //클릭 처리 방법1
+		curObj.click(); //클릭 처리 방법2
+	});
+
+	$('.item-menu').click(function(){
+	selectMenu($(this));
+	});
+
+	function selectMenu(el){
+		$('.item-menu').removeClass('selected');
+		if(el != null && el.length !=0)
+			el.addClass('selected');
+	};
+		
+
+
+
+		
+	</script>
+</body>
+</html>

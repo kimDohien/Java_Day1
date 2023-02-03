@@ -74,6 +74,7 @@ $(function(){
 	});
 });
 
+
 function selectNewList(el){
 	//1. 초기에 첫번째 list-press를 제외한 나머지 list-press안보이게 감춤
 	$('.box-body-left2 .list-press').removeClass('selected').hide();
@@ -141,9 +142,40 @@ $(function(){
 $(function(){
 	$('.group-menu .btn-more').click(function(e){
 		e.preventDefault();
-		$(this).toggleClass('fold')
+		$(this).toggleClass('fold');
+		$('.container-menu .container-service').toggle();
+		$('	.inner-container .btn-area').toggle();
+		setMenuServiceBtn(true);
+	});
+	//더보기란>메뉴버튼
+	$('.group-menu .btn-set').click(function(e){
+		e.preventDefault();
+		setMenuServiceBtn();
 	});
 });
+
+function setMenuServiceBtn(flag){
+	$('.group-menu .btn-area .btn').removeClass('display-none');
+	$('.container-service .group-service').removeClass('display-none')
+	$('.container-menu .list-favority-menu').removeClass('display-none');
+	$('.container-menu .list-empty-box').removeClass('display-none');
+	if(flag){
+		$('.group-menu .btn-area .btn-reset').addClass('display-none');
+		$('.group-menu .btn-area .btn-save').addClass('display-none');
+		$('.container-service .group-service').last().addClass('display-none');
+		$('.container-menu .list-empty-box').addClass('display-none');
+	}else{
+		$('.group-menu .btn-area .btn-set').addClass('display-none');
+		$('.group-menu .btn-area .btn-show-all').addClass('display-none');
+		$('.container-service .group-service').first().addClass('display-none')
+		$('.container-menu .list-favority-menu').addClass('display-none');
+		
+	}
+}
+
+
+let tmpArr =[];//메뉴 설정에서 선택 중인 메뉴
+let arr = []; //저장을 통해 최종 확정된 선택 메뉴 list-select-menu에 넣어줌
 
 
 

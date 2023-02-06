@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Document</title>
+	<script src="../js/jquery.min.js"></script>
+	<style>
+		.form{
+			width: 200px;	height: 250px;
+			border: 1px solid black;	text-align: center;
+			padding: 20px;
+		}
+		div{
+			display: inline-block;
+		}
+		button{
+			margin-top: 10px;
+		}
+	</style>
+</head>
+<body>
+	<form action="" class="form">
+		<h1>회원가입</h1>
+		<div>
+			<input type="text" name="id" placeholder="아이디" id="id">
+		</div><br>
+		<button type="button" class="btn-check">중복확인</button><br>
+		<button type="submit" class="btn-join">회원가입</button>
+	</form>
+
+	<script>
+		/*
+		-아이디 중복확인이 통과 된 경우만 회원가입이 진행
+		-중복확인 버튼을 클릭해서 중복 확인을 하지않고 회원가입을 진행하면 진행이 안되게 막아줘야함
+		-중복확인을 했더라도 아이디가 바뀌면 회원가입이 진행되지 않게 막아줘야함
+		*/
+		$(function(){
+
+			$('.btn-check').click(function(){
+			let id = $('[name=id]').val();
+			let idRegex = /^[a-zA-Z0-9]{5,8}$/;
+			if(idRegex.test(id)){
+				$('#id').css('background-color','green');
+				isPossible = true;
+			}else{
+				$('#id').css('background-color','red');
+			}	
+				
+			});		
+			$('form').submit(function(){
+				if(!isPossible){
+					alert('중복 확인하세요')
+				return false;
+					}
+			});
+			$('[name=id]').change(function(){
+				isPossible = false;
+			});
+	});
+	let isPossible = false; 
+
+	
+	</script>
+</body>
+</html>

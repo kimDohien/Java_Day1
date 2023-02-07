@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Document</title>
+	<script src="../js/jquery.min.js"></script>
+</head>
+<body>
+	<form action="" method="post">
+		<input type="text" name="id">
+		<button type="button" class="btn-dup">중복확인</button><br>
+		<input type="password" name="pw"><br>
+		<input type="password" name="pw2"><br>
+		서울<input type="radio" name="region" value="서울">
+		부산<input type="radio" name="region" value="부산">
+		대구<input type="radio" name="region" value="대구">
+		<br>
+		<button type="reset">초기화</button>
+		<button type="submit">회원가입</button>
+	</form>
+	<script>
+		$(function(){
+			//회원가입
+			$('form').submit(function(){
+				if($('[name=region]:checked').length == 0){
+					alert('지역을 선택해주세요.');
+					return false;
+				}
+			});
+			//중복확인
+			$('.btn-dup').click(function(){
+				let id = $('[name=id]').val();
+				//6~12글자
+				let regex = /^[a-z][a-zA-Z0-9!@#]{5,11}$/ //[a-z]맨앞글자 고정이기 앞글자 빼고 5-11로 바꿔야한다.
+				if(regex.test(id)){
+					$('[name=id]').css('background','green');
+				}else{
+					$('[name=id]').css('background','red');
+				}
+			});
+			//초기화 (그냥 type을 reset으로 설정하면 값만 초기화될뿐,안에 css는 초기화X)
+			$('button[type=reset]').click(function(){
+				 $('[name=id]').removeAttr('style') ; //방법1
+				// $('[name=id]').attr('style','') ; //방법2
+			});
+			
+		});
+	</script>
+</body>
+</html>

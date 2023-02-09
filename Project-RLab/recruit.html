@@ -17,8 +17,8 @@
         <!-- 검색창 -->
         <section>
         <div class="search_container">
-            <input type="text" class="search search_title" name="search_title" placeholder="제목으로 검색하기">
-            <input type="text" class="search search_tag" placeholder="# 태그로 검색하기">
+            <input type="text" class="search search_title" name="search_title" placeholder="    제목으로 검색하기">
+            <input type="text" class="search search_tag" placeholder="    # 태그로 검색하기">
         <div class="tag_box">
             <span>관련 태그 : </span> 
             <a href="#" class="hashTag">#자격증</a>
@@ -31,10 +31,22 @@
         <!-- 모집 부분 -->
         <div class="result_container">
         <section>
-            <div class="menu-nav"></div>
+            <div class="menu_nav">
+                <div class="recruit_state">
+                    <span>모집중</span>
+                    <input type="checkbox" id="recruit_switch">
+                    <label for="switch" class="switch_label">
+                      <span>ON</span>
+                      <span class="switch_btn"> </span>
+                    </label>
+                </div>
+                <!-- <div class="recruit_tag_box">
+                    <span id="tag_title">#태그</span>
+                </div> -->
+            </div>
         </section>
         <section>
-            <div class="study-card-container"></div>
+            <div class="study_card_container"></div>
         </section>
         </div>
     </main>

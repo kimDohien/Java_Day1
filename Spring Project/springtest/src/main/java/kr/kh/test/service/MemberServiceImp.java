@@ -9,4 +9,11 @@ public class MemberServiceImp implements MemberService {
 
 	@Autowired
 	MemberDAO memberDao;
+
+	@Override
+	public String selectMemberName(Integer num) {
+		if(num == null)
+			return null;
+		return memberDao.selectMemberName(num);
+	}
 }

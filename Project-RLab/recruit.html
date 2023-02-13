@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -7,123 +8,331 @@
     <title>스터디 모집</title>
     <link rel="stylesheet" href="recruit.css">
 </head>
+
 <body>
     <!-- Header -->
     <header>
         <div id="header_container">
             <div class="header_left">
-              <a href="#" class="btn_home"><i class="icon_home"></i>LAB</a>
-              <nav class="top_menu_container">
-                <a href="#" class="list_item">예약하기</a>
-                <a href="#" class="list_item">스터디</a>
-                <a href="#" class="list_item">모집 게시판</a>
-              </nav>
+                <a href="#" class="btn_home"><i class="icon_home"></i>LAB</a>
+                <nav class="top_menu_container">
+                    <a href="#" class="list_item">예약하기</a>
+                    <a href="#" class="list_item">스터디</a>
+                    <a href="#" class="list_item">모집 게시판</a>
+                </nav>
             </div>
             <div class="header_right">
-              <div class="mypage_container">
-                <a href="#" class="mypage"><i class="icon_mypage"></i><span class="blind">마이페이지</span></a>
-              </div>
+                <div class="mypage_container">
+                    <a href="#" class="mypage"><i class="icon_mypage"></i><span class="blind">마이페이지</span></a>
+                </div>
             </div>
-          </div>
+        </div>
     </header>
     <!-- Main -->
     <main>
         <!-- 검색창 -->
         <section>
-        <div class="search_container">
-            <input type="text" class="search search_title" name="search_title" placeholder="    제목으로 검색하기">
-            <input type="text" class="search search_tag" placeholder="    # 태그로 검색하기">
-        <div class="tag_box">
-            <span>관련 태그 : </span> 
-            <a href="#" class="hashTag">#자격증</a>
-            <a href="#" class="hashTag">#자격증</a>
-            <a href="#" class="hashTag">#자격증</a>
-        </div>
-        </div>
+            <div class="search_container">
+                <input type="text" class="search search_title" name="search_title" placeholder="    제목으로 검색하기">
+                <input type="text" class="search search_tag" placeholder="    # 태그로 검색하기">
+                <div class="tag_box">
+                    <span>관련 태그 : </span>
+                    <a href="#" class="hashTag">#자격증</a>
+                    <a href="#" class="hashTag">#자격증</a>
+                    <a href="#" class="hashTag">#자격증</a>
+                </div>
+            </div>
         </section>
-        
+
         <!-- 모집 부분 -->
         <div class="result_container">
-        <section>
-            <div class="menu_nav clearfix">
-                <div class="recruit_state">
-                    <span class="recruit_state_title">모집중</span>
-                    <input type="checkbox" id="recruit_switch">
-                    <label for="switch" class="switch_label">
-                      <span>ON</span>
-                      <span class="switch_btn"></span>
-                    </label>
-                </div>
-                <div class="recruit_tag_box ">
-                    <span id="tag_title">#태그</span>
-                    <div class="selectd_tag clearfix">
-                        <a href="#" class="sel_hashTag">#자격증</a>
-                        <a href="#" class="sel_hashTag">#자격증</a>
+            <section>
+                <div class="menu_nav clearfix">
+                    <div class="recruit_state">
+                        <span class="recruit_state_title">모집중</span>
+                        <input type="checkbox" id="recruit_switch">
+                        <label for="switch" class="switch_label">
+                            <span>ON</span>
+                            <span class="switch_btn"></span>
+                        </label>
+                    </div>
+                    <div class="recruit_tag_box ">
+                        <span id="tag_title">#태그</span>
+                        <div class="selectd_tag clearfix">
+                            <a href="#" class="sel_hashTag">#자격증</a>
+                            <a href="#" class="sel_hashTag">#자격증</a>
+                        </div>
+                    </div>
+                    <div class="line .clearfix"></div>
+                    <div class="sel_region clearfix">
+                        <span class="region_title">지역</span>
+                        <a href="#" class="selected">지역 미지정</a>
+                        <a href="#">서울 특별시</a>
+                        <a href="#">경기도</a>
+                        <a href="#">부산 광역시</a>
+                        <a href="#">인천 광역시</a>
+                        <a href="#">대구 광역시</a>
+                        <a href="#">경상북도</a>
+                        <a href="#">경상남도</a>
+                        <a href="#">대전 광역시</a>
+                        <a href="#">전라북도</a>
+                        <a href="#">전라남도</a>
+                        <a href="#">충청북도</a>
+                        <a href="#">충청남도</a>
+                        <a href="#">광주 광역시</a>
+                        <a href="#">강원도</a>
+                        <a href="#">울산 광역시</a>
+                        <a href="#">제주 특별 자치도</a>
+                        <a href="#">세종 특별 자치도</a>
                     </div>
                 </div>
-                <div class="line .clearfix"></div>
-                <div class="sel_region clearfix">
-                <span class="region_title">지역</span>
-                <a href="#" class="selected">지역 미지정</a>
-                <a href="#">서울 특별시</a>
-                <a href="#">경기도</a>
-                <a href="#">부산 광역시</a>
-                <a href="#">인천 광역시</a>
-                <a href="#">대구 광역시</a>
-                <a href="#">경상북도</a>
-                <a href="#">경상남도</a>
-                <a href="#">대전 광역시</a>
-                <a href="#">전라북도</a>
-                <a href="#">전라남도</a>
-                <a href="#">충청북도</a>
-                <a href="#">충청남도</a>
-                <a href="#">광주 광역시</a>
-                <a href="#">강원도</a>
-                <a href="#">울산 광역시</a>
-                <a href="#">제주 특별 자치도</a>
-                <a href="#">세종 특별 자치도</a>
-                </div>
-            </div>
-        </section>
-        <section>
-            <div class="study_card_container">
-                <ul>
-                    <div class="row">
-                        <li class="study_card_box">
-                            <div class="study_img_box"></div>
-                            <div class="study_intro">
-                                <span>[ 서울 ] 정처기 같이 공부해요 </span>
-                                <div class="study_tag_box">
-                                    <a href="#" class="study_tag">#자격증</a>
-                                    <a href="#" class="study_tag">#자격증</a>
-                                    <a href="#" class="study_tag">#자격증</a>
-                                    <a href="#" class="study_tag">#자격증</a>
-                                    <a href="#" class="study_tag">#자격증</a>
-                                    <a href="#" class="study_tag">#자격증</a>
-                                </div>
-                                <div class="study_content"></div>
-                             
-                            </div>
-                        </li>
-                        <li class="study_card_box">
-                            <div class="study_img_box"></div>
-                            <div class="study_intro">
-                                <span></span>
-                                <div class="study_content"></div>
-                             
-                            </div>
-                        </li>
-                        <li class="study_card_box">
-                            <div class="study_img_box"></div>
-                            <div class="study_intro">
-                                <span></span>
-                                <div class="study_content"></div>
-                             
-                            </div>
-                        </li>
+            </section>
+            <section>
+                <div class="study_card_container">
+                    <ul>
+                        <div class="row_study_card clearfix">
+                            <li class="study_card_box add_shadow">
+                                <a href="">
+                                    <div class="study_img_box"></div>
+                                    <div class="study_info">
+                                        <div class="study_tag_info">
+                                            <span href="#" class="study_tag">#자격증</span>
+                                            <span href="#" class="study_tag">#자격증</span>
+                                            <span href="#" class="study_tag">#자격증</span>
+                                            <span href="#" class="study_tag">#자격증</span>
+                                            <span href="#" class="study_tag">#자격증</span>
+                                            <span href="#" class="study_tag">#자격증</span>
+                                        </div>
+                                        <span class="study_recruit_content">[ 서울 ] 정처기 같이 공부해요 </span>
+                                        <div class="study_content">
+                                            <div class="study_recruiting">
+                                                <span>모집중</span>
+                                                <span>1</span>
+                                                <span>/</span>
+                                                <span>5</span>
+                                            </div>
+                                            <div class="like_img"></div>
+                                        </div>
+                                    </div>
+                                </a>
+                            </li>
+                            <li class="study_card_box add_shadow">
+                                <a href="">
+                                    <div class="study_img_box"></div>
+                                    <div class="study_info">
+                                        <div class="study_tag_info">
+                                            <span href="#" class="study_tag">#자격증</span>
+                                            <span href="#" class="study_tag">#자격증</span>
+                                            <span href="#" class="study_tag">#자격증</span>
+                                            <span href="#" class="study_tag">#자격증</span>
+                                            <span href="#" class="study_tag">#자격증</span>
+                                            <span href="#" class="study_tag">#자격증</span>
+                                        </div>
+                                        <span class="study_recruit_content">[ 서울 ] 정처기 같이 공부해요 </span>
+                                        <div class="study_content">
+                                            <div class="study_recruiting">
+                                                <span>모집중</span>
+                                                <span>1</span>
+                                                <span>/</span>
+                                                <span>5</span>
+                                            </div>
+                                            <div class="like_img"></div>
+                                        </div>
+                                    </div>
+                                </a>
+                            </li>                           <li class="study_card_box add_shadow">
+                                <a href="">
+                                    <div class="study_img_box"></div>
+                                    <div class="study_info">
+                                        <div class="study_tag_info">
+                                            <span href="#" class="study_tag">#자격증</span>
+                                            <span href="#" class="study_tag">#자격증</span>
+                                            <span href="#" class="study_tag">#자격증</span>
+                                            <span href="#" class="study_tag">#자격증</span>
+                                            <span href="#" class="study_tag">#자격증</span>
+                                            <span href="#" class="study_tag">#자격증</span>
+                                        </div>
+                                        <span class="study_recruit_content">[ 서울 ] 정처기 같이 공부해요 </span>
+                                        <div class="study_content">
+                                            <div class="study_recruiting">
+                                                <span>모집중</span>
+                                                <span>1</span>
+                                                <span>/</span>
+                                                <span>5</span>
+                                            </div>
+                                            <div class="like_img"></div>
+                                        </div>
+                                    </div>
+                                </a>
+                            </li>
+                        </div>
+                         <div class="row_study_card clearfix">
+                            <li class="study_card_box add_shadow">
+                                <a href="">
+                                    <div class="study_img_box"></div>
+                                    <div class="study_info">
+                                        <div class="study_tag_info">
+                                            <span href="#" class="study_tag">#자격증</span>
+                                            <span href="#" class="study_tag">#자격증</span>
+                                            <span href="#" class="study_tag">#자격증</span>
+                                            <span href="#" class="study_tag">#자격증</span>
+                                            <span href="#" class="study_tag">#자격증</span>
+                                            <span href="#" class="study_tag">#자격증</span>
+                                        </div>
+                                        <span class="study_recruit_content">[ 서울 ] 정처기 같이 공부해요 </span>
+                                        <div class="study_content">
+                                            <div class="study_recruiting">
+                                                <span>모집중</span>
+                                                <span>1</span>
+                                                <span>/</span>
+                                                <span>5</span>
+                                            </div>
+                                            <div class="like_img"></div>
+                                        </div>
+                                    </div>
+                                </a>
+                            </li>
+                            <li class="study_card_box add_shadow">
+                                <a href="">
+                                    <div class="study_img_box"></div>
+                                    <div class="study_info">
+                                        <div class="study_tag_info">
+                                            <span href="#" class="study_tag">#자격증</span>
+                                            <span href="#" class="study_tag">#자격증</span>
+                                            <span href="#" class="study_tag">#자격증</span>
+                                            <span href="#" class="study_tag">#자격증</span>
+                                            <span href="#" class="study_tag">#자격증</span>
+                                            <span href="#" class="study_tag">#자격증</span>
+                                        </div>
+                                        <span class="study_recruit_content">[ 서울 ] 정처기 같이 공부해요 </span>
+                                        <div class="study_content">
+                                            <div class="study_recruiting">
+                                                <span>모집중</span>
+                                                <span>1</span>
+                                                <span>/</span>
+                                                <span>5</span>
+                                            </div>
+                                            <div class="like_img"></div>
+                                        </div>
+                                    </div>
+                                </a>
+                            </li>                           <li class="study_card_box add_shadow">
+                                <a href="">
+                                    <div class="study_img_box"></div>
+                                    <div class="study_info">
+                                        <div class="study_tag_info">
+                                            <span href="#" class="study_tag">#자격증</span>
+                                            <span href="#" class="study_tag">#자격증</span>
+                                            <span href="#" class="study_tag">#자격증</span>
+                                            <span href="#" class="study_tag">#자격증</span>
+                                            <span href="#" class="study_tag">#자격증</span>
+                                            <span href="#" class="study_tag">#자격증</span>
+                                        </div>
+                                        <span class="study_recruit_content">[ 서울 ] 정처기 같이 공부해요 </span>
+                                        <div class="study_content">
+                                            <div class="study_recruiting">
+                                                <span>모집중</span>
+                                                <span>1</span>
+                                                <span>/</span>
+                                                <span>5</span>
+                                            </div>
+                                            <div class="like_img"></div>
+                                        </div>
+                                    </div>
+                                </a>
+                            </li>
+                        </div>
+                        <div class="row_study_card clearfix">
+                            <li class="study_card_box add_shadow">
+                                <a href="">
+                                    <div class="study_img_box"></div>
+                                    <div class="study_info">
+                                        <div class="study_tag_info">
+                                            <span href="#" class="study_tag">#자격증</span>
+                                            <span href="#" class="study_tag">#자격증</span>
+                                            <span href="#" class="study_tag">#자격증</span>
+                                            <span href="#" class="study_tag">#자격증</span>
+                                            <span href="#" class="study_tag">#자격증</span>
+                                            <span href="#" class="study_tag">#자격증</span>
+                                        </div>
+                                        <span class="study_recruit_content">[ 서울 ] 정처기 같이 공부해요 </span>
+                                        <div class="study_content">
+                                            <div class="study_recruiting">
+                                                <span>모집중</span>
+                                                <span>1</span>
+                                                <span>/</span>
+                                                <span>5</span>
+                                            </div>
+                                            <div class="like_img"></div>
+                                        </div>
+                                    </div>
+                                </a>
+                            </li>
+                            <li class="study_card_box add_shadow">
+                                <a href="">
+                                    <div class="study_img_box"></div>
+                                    <div class="study_info">
+                                        <div class="study_tag_info">
+                                            <span href="#" class="study_tag">#자격증</span>
+                                            <span href="#" class="study_tag">#자격증</span>
+                                            <span href="#" class="study_tag">#자격증</span>
+                                            <span href="#" class="study_tag">#자격증</span>
+                                            <span href="#" class="study_tag">#자격증</span>
+                                            <span href="#" class="study_tag">#자격증</span>
+                                        </div>
+                                        <span class="study_recruit_content">[ 서울 ] 정처기 같이 공부해요 </span>
+                                        <div class="study_content">
+                                            <div class="study_recruiting">
+                                                <span>모집중</span>
+                                                <span>1</span>
+                                                <span>/</span>
+                                                <span>5</span>
+                                            </div>
+                                            <div class="like_img"></div>
+                                        </div>
+                                    </div>
+                                </a>
+                            </li>                           <li class="study_card_box add_shadow">
+                                <a href="">
+                                    <div class="study_img_box"></div>
+                                    <div class="study_info">
+                                        <div class="study_tag_info">
+                                            <span href="#" class="study_tag">#자격증</span>
+                                            <span href="#" class="study_tag">#자격증</span>
+                                            <span href="#" class="study_tag">#자격증</span>
+                                            <span href="#" class="study_tag">#자격증</span>
+                                            <span href="#" class="study_tag">#자격증</span>
+                                            <span href="#" class="study_tag">#자격증</span>
+                                        </div>
+                                        <span class="study_recruit_content">[ 서울 ] 정처기 같이 공부해요 </span>
+                                        <div class="study_content">
+                                            <div class="study_recruiting">
+                                                <span>모집중</span>
+                                                <span>1</span>
+                                                <span>/</span>
+                                                <span>5</span>
+                                            </div>
+                                            <div class="like_img"></div>
+                                        </div>
+                                    </div>
+                                </a>
+                            </li>
+                        </div>
+                    </ul>
+
+                    <div class="page_box clearfix">
+                        <i class="btn_prev"></i>
+                        <span class="page_number">1</span>
+                        <span class="page_number">2</span>
+                        <span class="page_number">3</span>
+                        <span class="page_number">4</span>
+                        <span class="page_number">5</span>
+                        <i class="btn_next"></i>
                     </div>
-                </ul>
-            </div>
+                </div>
+               
+            </section>
+        </div>
         </section>
         </div>
     </main>
@@ -132,4 +341,5 @@
 
     </footer>
 </body>
+
 </html>

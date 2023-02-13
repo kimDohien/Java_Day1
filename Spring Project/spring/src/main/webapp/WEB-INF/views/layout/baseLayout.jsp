@@ -7,7 +7,7 @@
 <head>
 	<title>스프링</title>
 	<link rel="stylesheet" href="/spring/resources/css/bootstrap.min.css">
-	<script src="/spring/resources/js/jquery.slim.min.js"></script>
+	<script src="/spring/resources/js/jquery.min.js"></script>
 	<script src="/spring/resources/js/popper.min.js"></script>
 	<script src="/spring/resources/js/bootstrap.bundle.min.js"></script>
 </head>

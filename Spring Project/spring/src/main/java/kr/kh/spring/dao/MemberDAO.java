@@ -1,5 +1,7 @@
 package kr.kh.spring.dao;
 
+
+
 import org.apache.ibatis.annotations.Param;
 
 import kr.kh.spring.vo.MemberOKVO;
@@ -11,6 +13,12 @@ public interface MemberDAO {
 	int insertMember(@Param("m")MemberVO member);
 
 	void insertMemberOK(@Param("mok")MemberOKVO mok);
+
+	MemberOKVO selectMemberOK(@Param("mok")MemberOKVO mok);
+
+	void deleteMemberOK(@Param("mok")MemberOKVO mok);
+
+	void updateAuthority(@Param("me_id")String mo_me_id, @Param("me_authority") int me_authority);
 
 
 }

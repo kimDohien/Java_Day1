@@ -8,14 +8,15 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
 import kr.kh.spring.service.MemberService;
+import kr.kh.spring.vo.MemberOKVO;
 import kr.kh.spring.vo.MemberVO;
 
 @Controller
 public class HomeController {
 //	http://localhost:8080/spring/
 	
-	/*@Autowired : 인터페이스에 객체를 만들어주는데 인터페이스 구현클래스를 가져다가 자동으로 만들어줌.
-	(단 serviceImp 클래스에 @Service추가해야함)*/
+	/*Autowired어노테이션 : 인터페이스에 객체를 만들어주는데 인터페이스 구현클래스를 가져다가 자동으로 만들어줌.
+	(단 serviceImp 클래스에 Service어노테이션추가해야함)*/
 	@Autowired 
 	MemberService memberService;
 	
@@ -37,8 +38,7 @@ public class HomeController {
 		if(isSignup) {
 			/*아이디가 주어지면 주어진 아이디의 인증 번호를 발급하고,
 			발급한 인증번호를 DB에 저장하고, 이메일로 인증 번호가 있는 링크를 전송하는 기능*/
-			memberService.emailAuthentication(member.getMe_id());
-
+			memberService.emailAuthentication(member.getMe_id(),member.getMe_email());
 			
 			mv.setViewName("redirect:/"); //성공하면 메인페이지
 		}else {
@@ -47,11 +47,23 @@ public class HomeController {
 		}	
 		return mv;
 	}
+	@RequestMapping(value = "/email",method =RequestMethod.GET)
+	public ModelAndView email(ModelAndView mv , MemberOKVO mok) {
+		
+		System.out.println("인증정보" + mok);
+		
+		if(memberService.emailAuthenticationConfirm(mok)) {
+			System.out.println("성공");
+		}else {
+			System.out.println("실패");
+		}
+		mv.setViewName("redirect:/");//연결
+		return mv;
+	}
+
 	
 	
-	
-	
-	
+
 	
 	
 	

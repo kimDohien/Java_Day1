@@ -13,7 +13,7 @@ label.error {
 	<form action="<c:url value='/signup'></c:url>" method="post">
 		<div class="form-group">
 			<label for="id">아이디:</label> <input type="text" class="form-control"
-				id="id" name="md_id">
+				id="id" name="me_id">
 		</div>
 		<button class="btn btn-outline-success col-12" type="button" onclick="alert('추후구현')">아이디 중복체크</button>
 		<div class="form-group">

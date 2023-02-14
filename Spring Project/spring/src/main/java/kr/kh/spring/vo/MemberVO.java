@@ -6,6 +6,9 @@ import java.util.Date;
 
 import lombok.Data;
 
+
+
+
 @Data
 public class MemberVO {
 	String me_id;
@@ -15,8 +18,7 @@ public class MemberVO {
 	int me_authority;
 	Date me_join_time;
 
-	public void setMe_birthday(String str) { // 없으면 400(typeMismatch)에러가 남
-	
+	public void setMe_birthday(String str) {//없으면 400(typeMismatch)에러가 남
 		SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
 		try {
 			me_birthday = format.parse(str);
@@ -24,10 +26,4 @@ public class MemberVO {
 			me_birthday = null;
 		}
 	}
-
-	public Object getMe_id() {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
 }

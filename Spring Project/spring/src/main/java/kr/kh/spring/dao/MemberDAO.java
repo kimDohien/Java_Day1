@@ -20,5 +20,8 @@ public interface MemberDAO {
 
 	void updateAuthority(@Param("me_id")String mo_me_id, @Param("me_authority") int me_authority);
 
+	MemberVO selectMemberByID(@Param("me_id")String me_id);
+
+
 
 }

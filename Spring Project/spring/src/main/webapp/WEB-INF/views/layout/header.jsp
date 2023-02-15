@@ -25,6 +25,9 @@
 			<li class="nav-item"><a class="nav-link"
 				href="<c:url value='/logout'></c:url>">로그아웃</a></li>
 		</c:if>
+		<!-- 게시글 -->
+		<li class="nav-item"><a class="nav-link"
+				href="<c:url value='/board/list'></c:url>">게시글</a></li>
 	</ul>
 </nav>
 

@@ -78,7 +78,7 @@
     display: flex;
     gap: 30px;
   }
-  #header_container .header_left .btn_home {
+  .btn_home {
     display: flex;
     width: 66px;
     height: 50px;
@@ -189,6 +189,7 @@
   .sel_hashTag{
     background : var(--color_mint); border-radius: var(--border_radius_2); text-decoration: none; text-align: center;
     color: var(--color_black); font-size: var(--font_size_cont_m);  color: var(--color_black); font-weight: bold; 
+    line-height: 2;
   }
 
 
@@ -283,4 +284,65 @@
     width: 30px; height: 30px; margin-left: 10px;
     background-position: -10px -10px; display: inline-block;
     background-image: url(../img/page_right.png); background-size:50px 50px;
+  }
+
+
+   /* Footer */
+   footer .container{
+    width: 1200px; margin: 0 auto; padding: 50px;
+  }
+  .info_container{
+  margin-top: 25px;
+  }
+  .info_container .direct_num_box{
+    float: left;
+    width: 300px;
+    height: 180px;
+  }
+  .direct_num_box .list_tel{
+    margin-top: 5px;
+  }
+  .direct_num_box .item_tel{
+    margin-left: 10px;
+  }
+  .direct_num_box .link_tel{
+    font-size: 18px;
+    margin-top: 3px;
+    display: inline-block;
+  }
+  .info_container .info_right_container{
+    float: right;
+  }
+  .info_container .info_box_right{
+    float: left;
+    width: 140px;
+    height: 180px;
+    margin-right: 20px;
+  }
+  .info_container .info_box_right .info_title{
+    margin-bottom: 5px;
+  }
+  .info_container .info_box_right li{
+    padding-top: 5px;
+  }
+  footer .corp_container{
+    margin-top: 10px;
+  }
+  footer .corp_container .link_corp{
+    padding-left: 7px;
+    font-size: 13px;
+  }
+  footer .corp_container .link_corp::before{
+    width: 1px;
+    height: 11px;
+    content: '';
+    display: inline-block;
+    margin-right: 10px;
+    background-color: grey;
+  }
+  footer .corp_container .link_corp:nth-child(1){
+    padding: 0;
+  }
+  footer .corp_container .link_corp:nth-child(1)::before{
+    display: none;
   }

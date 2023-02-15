@@ -13,11 +13,17 @@
 
 	<!-- Links -->
 	<ul class="navbar-nav">
+		<!-- 로그인  -->
 		<c:if test="${user == null}">
-		<li class="nav-item"><a class="nav-link"
-			href="<c:url value='/signup'></c:url>">회원가입</a></li>
-		<li class="nav-item"><a class="nav-link"
-			href="<c:url value='/login'></c:url>">로그인</a></li>
+			<li class="nav-item"><a class="nav-link"
+				href="<c:url value='/signup'></c:url>">회원가입</a></li>
+			<li class="nav-item"><a class="nav-link"
+				href="<c:url value='/login'></c:url>">로그인</a></li>
+		</c:if>
+		<!-- 로그아웃 -->
+		<c:if test="${user != null}"> 
+			<li class="nav-item"><a class="nav-link"
+				href="<c:url value='/logout'></c:url>">로그아웃</a></li>
 		</c:if>
 	</ul>
 </nav>

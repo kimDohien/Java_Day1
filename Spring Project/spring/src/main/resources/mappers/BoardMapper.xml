@@ -3,21 +3,31 @@
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="kr.kh.spring.dao.BoardDAO">
-	<select id="selectAllBoardType" resultType ="kr.kh.spring.vo.BoardTypeVO">
-		select * from board_type 
-	</select>
-	<insert id="insertBoardType">
-		insert into board_type(bt_type,bt_name,bt_r_authority,bt_w_authority)
-		values(#{bt.bt_type},#{bt.bt_name},#{bt.bt_r_authority},#{bt.bt_w_authority})
-	</insert>
-	<update id="udpateBoardType">
-		update board_type
-			set
-				bt_type = #{bt.bt_type},
-				bt_name = #{bt.bt_name},
-				bt_r_authority = #{bt.bt_r_authority},
-				bt_w_authority = #{bt.bt_w_authority}
-			where
-				bt_num = #{bt.bt_num}
-	</update>
+  	<select id="selectAllBoardType" resultType="kr.kh.spring.vo.BoardTypeVO">
+  		<![CDATA[
+  		select * from board_type where bt_w_authority <= #{authority}
+  		]]>
+  	</select>
+  	<insert id="insertBoardType">
+  		insert into board_type(bt_type, bt_name, bt_r_authority, bt_w_authority)
+  		values(#{bt.bt_type},#{bt.bt_name},#{bt.bt_r_authority},#{bt.bt_w_authority})
+  	</insert>
+  	<update id="updateBoardType">
+  		update board_type
+  			set
+  				bt_type = #{bt.bt_type},
+  				bt_name = #{bt.bt_name},
+  				bt_r_authority = #{bt.bt_r_authority},
+  				bt_w_authority = #{bt.bt_w_authority}
+  			where
+  				bt_num = #{bt.bt_num}
+  	</update>
+  	<delete id="deleteBoardType">
+  		delete from board_type where bt_num = #{bt_num}
+  	</delete>
+  	<insert id="insertBoard" useGeneratedKeys="true" keyProperty="bo.bo_num">
+  		insert into board(bo_title, bo_content, bo_me_id, bo_bt_num, bo_ori_num )
+  		values(#{bo.bo_title},#{bo.bo_content},#{bo.bo_me_id},#{bo.bo_bt_num}, 
+  			(select Auto_increment from information_schema.tables where table_schema = 'spring' and table_name = 'board'))
+  	</insert>
 </mapper>

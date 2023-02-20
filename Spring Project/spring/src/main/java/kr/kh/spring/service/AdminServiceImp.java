@@ -10,14 +10,13 @@ import kr.kh.spring.vo.BoardTypeVO;
 
 @Service
 public class AdminServiceImp implements AdminService{
-	
+
 	@Autowired
 	BoardDAO boardDao;
 	
 	@Override
 	public ArrayList<BoardTypeVO> getBoardType() {
-		
-		return boardDao.selectAllBoardType();
+		return boardDao.selectAllBoardType(9);
 	}
 
 	@Override
@@ -35,8 +34,15 @@ public class AdminServiceImp implements AdminService{
 	public boolean updateBoardType(BoardTypeVO bt) {
 		if(bt == null || bt.getBt_name().trim().length() == 0)
 			return false;
-		return boardDao.udpateBoardType(bt);
-	
+		return boardDao.updateBoardType(bt);
+	}
+
+
+	@Override
+	public boolean deleteBoardType(int bt_num) {
+		if(bt_num <= 0) 
+			return false;
+		return boardDao.deleteBoardType(bt_num);
 	}
 
 }

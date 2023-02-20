@@ -25,10 +25,14 @@ public class HomeController {
 	
 	@RequestMapping(value = "/", method = RequestMethod.GET)
 	public ModelAndView home(ModelAndView mv,Integer num) {
-		String name = memberService.selectMemberName(num);
-		System.out.println(name);
+		String id = memberService.selectMemberName(num);
+		System.out.println(id);
 		mv.setViewName("/main/home");
 		return mv ;
 	}
-	
+	@RequestMapping(value = "/signup", method = RequestMethod.GET)
+	public ModelAndView signup(ModelAndView mv) {
+		mv.setViewName("/member/signup");
+		return mv ;
+	}	
 }

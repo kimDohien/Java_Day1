@@ -56,8 +56,6 @@ public class HomeController {
 	@RequestMapping(value = "/email",method =RequestMethod.GET)
 	public ModelAndView email(ModelAndView mv , MemberOKVO mok) {
 		
-		
-		
 		if(memberService.emailAuthenticationConfirm(mok)) {
 			
 		}else {

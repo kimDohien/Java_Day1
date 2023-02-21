@@ -48,6 +48,19 @@ public class MemberServiceImp implements MemberService {
 	
 	}
 
+	@Override
+	public MemberVO login(MemberVO member) {
+		if(member ==null || member.getMe_id()==null || member.getMe_pw() == null)
+			return null;
+		MemberVO dbMember = memberDao.selectMemberByID(member.getMe_id());
+		if(dbMember == null)
+			return null;
+		//입력한 비번과 암호화된 비번이 같은지 확인
+		if(passwordEncoder.matches(member.getMe_pw(),dbMember.getMe_pw()))
+			return dbMember;
+		return null;
+	}
+
 	
 
 

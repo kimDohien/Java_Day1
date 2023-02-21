@@ -4,9 +4,12 @@ import java.text.DateFormat;
 import java.util.Date;
 import java.util.Locale;
 
+import javax.servlet.http.HttpServletRequest;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.userdetails.User;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -24,6 +27,7 @@ public class HomeController {
 	@Autowired
 	MemberService memberService;
 	
+
 	
 	@RequestMapping(value = "/", method = RequestMethod.GET)
 	public ModelAndView home(ModelAndView mv,Integer num) {
@@ -49,6 +53,28 @@ public class HomeController {
 			mv.setViewName("redirect:/signup");//연결실패
 			return mv;
 		}	
+		return mv;
+	}
+	
+	
+	@RequestMapping(value= "/login", method = RequestMethod.GET)
+	public ModelAndView login(ModelAndView mv) {
+		mv.setViewName("/member/login");
+		return mv;
+	}
+	
+	@RequestMapping(value = "/login", method = RequestMethod.POST)
+	public ModelAndView loginPost(ModelAndView mv, MemberVO member) {
+		MemberVO user = memberService.login(member);
+		//mv.addObject를 하는 이유는 인터셉터를 하기 위해
+		mv.addObject("user",user);
+		//회원정보가 있으면
+		if(user != null) {			
+			mv.setViewName("redirect:/"); 
+		//회원정보가 없으면
+		}else {
+			mv.setViewName("redirect:/login");
+		}
 		return mv;
 	}
 	

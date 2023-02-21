@@ -112,7 +112,7 @@ public class MemberServiceImp implements MemberService {
 
 	@Override
 	public MemberVO login(MemberVO member) {
-		if(member ==null || member.getMe_id()==null ||
+		if(member ==null || member.getMe_id()==null || 
 				member.getMe_pw() == null)
 			return null;
 		MemberVO dbMember = memberDao.selectMemberByID(member.getMe_id());

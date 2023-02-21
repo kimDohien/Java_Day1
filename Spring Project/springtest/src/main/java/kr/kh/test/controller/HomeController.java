@@ -18,6 +18,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
+import kr.kh.test.vo.MemberOKVO;
 import kr.kh.test.vo.MemberVO;
 import kr.kh.test.service.MemberService;
 
@@ -58,6 +59,8 @@ public class HomeController {
 	}
 	
 	
+	
+	
 	@RequestMapping(value= "/login", method = RequestMethod.GET)
 	public ModelAndView login(ModelAndView mv) {
 		mv.setViewName("/member/login");
@@ -85,5 +88,7 @@ public class HomeController {
 		mv.setViewName("redirect:/");
 		return mv;
 	}
+	
+	
 	
 }

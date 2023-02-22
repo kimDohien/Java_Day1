@@ -70,13 +70,17 @@ public class HomeController {
 	@RequestMapping(value = "/login", method = RequestMethod.POST)
 	public ModelAndView loginPost(ModelAndView mv, MemberVO member) {
 		MemberVO user = memberService.login(member);
-		//mv.addObject를 하는 이유는 인터셉터를 하기 위해
-		mv.addObject("user",user);
 		//회원정보가 있으면
-		if(user != null) {			
+		//인증한 회원들만 로그인 하도록
+		if(user != null && user.getMe_authority() > 0) {	
+			//mv.addObject를 하는 이유는 인터셉터를 하기 위해
+			mv.addObject("user",user);
 			mv.setViewName("redirect:/"); 
 		//회원정보가 없으면
 		}else {
+			if(user != null) {
+				//인증 안된 회원이라고 메시지
+			}
 			mv.setViewName("redirect:/login");
 		}
 		return mv;
@@ -89,6 +93,17 @@ public class HomeController {
 		return mv;
 	}
 	
+	@RequestMapping(value = "/email/authentication", method =RequestMethod.GET)
+	public ModelAndView emailAuthentication(ModelAndView mv , MemberOKVO mok ) {	
+		boolean res = memberService.emailAuthentication(mok); 
+		if(res) {
+			//인증 성공 메시지
+		}else {
+			//인증 실패 메시지
+		}
+		mv.setViewName("redirect:/");//리다이렉트메인
+		return mv;
+	}
 	
 	
 }

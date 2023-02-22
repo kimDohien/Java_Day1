@@ -15,16 +15,23 @@
 			<ul class="navbar-nav">
 				<c:if test="${user == null }">
 					<li class="nav-item"><a class="nav-link"
-						href="<c:url value='/signup'></c:url>">회원가입</a>
-					</li>
+						href="<c:url value='/signup'></c:url>">회원가입</a></li>
 					<li class="nav-item"><a class="nav-link"
-						href="<c:url value='/login'></c:url>">로그인</a>
-					</li>
+						href="<c:url value='/login'></c:url>">로그인</a></li>
 				</c:if>
 				<c:if test="${user != null }">
-					<li class="nav-item"><a class="nav-link" href="<c:url value='/logout'></c:url>">로그아웃</a>
-					</li>
+					<li class="nav-item"><a class="nav-link"
+						href="<c:url value='/logout'></c:url>">로그아웃</a></li>
 				</c:if>
+				<li class="nav-item dropdown"><a
+					class="nav-link dropdown-toggle" href="#" id="navbardrop"
+					data-toggle="dropdown"> 관리자 메뉴 </a>
+					<div class="dropdown-menu">
+						<a class="dropdown-item" href="<c:url value='/admin/board/type/list'></c:url>">게시판 관리</a> <a
+							class="dropdown-item" href="#">Link 2</a> <a
+							class="dropdown-item" href="#">Link 3</a>
+					</div>
+				</li>
 			</ul>
 		</div>
 	</div>

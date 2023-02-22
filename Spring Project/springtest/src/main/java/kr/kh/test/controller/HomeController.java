@@ -1,6 +1,7 @@
 package kr.kh.test.controller;
 
 import java.text.DateFormat;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.Locale;
 
@@ -21,6 +22,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import kr.kh.test.vo.MemberOKVO;
 import kr.kh.test.vo.MemberVO;
+import kr.kh.test.vo.BoardTypeVO;
 import kr.kh.test.service.MemberService;
 import kr.kh.test.utils.MessageUtils;
 
@@ -121,5 +123,6 @@ public class HomeController {
 		return mv;
 	}
 	
+
 	
 }

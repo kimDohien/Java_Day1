@@ -49,5 +49,20 @@ public class AdminController {
 		mv.setViewName("redirect:/admin/board/type/list");
 		return mv ;
 	}
+	
+	@RequestMapping(value="/admin/board/type/update", method = RequestMethod.POST)
+	public ModelAndView adminBoardTypeUpdate(ModelAndView mv,BoardTypeVO bt, HttpServletResponse response, HttpServletRequest request) {
+		boolean isUpdate = adminService.updateBoardType(bt);
+		if(isUpdate) {
+			MessageUtils.alertAndMovePage(response, "게시글 수정 성공했습니다", request.getContextPath(), "/admin/board/type/list");
+		}else {
+			MessageUtils.alertAndMovePage(response, "게시글 수정 실패했습니다", request.getContextPath(), "/admin/board/type/list");
+		}
+		mv.setViewName("/admin/board/type/list");
+		return mv;
+	
+	}
+	
+	
 }
 

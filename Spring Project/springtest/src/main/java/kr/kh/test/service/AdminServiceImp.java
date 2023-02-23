@@ -24,6 +24,26 @@ public class AdminServiceImp implements AdminService{
 
 	@Override
 	public boolean insertBoardType(BoardTypeVO bt) {
+		if(!checkBoardType(bt))
+			return false;
+		int res = boardDao.insertBoardType(bt);
+		return res != 0; //0이 아니면 true, 0이면 false
+		//위 두 코드를 return boardDao.insertBoardType != 0;
+	}
+
+	@Override
+	public boolean updateBoardType(BoardTypeVO bt) {
+		if(!checkBoardType(bt))
+			return false;
+		//기본 게시판 번호 체크
+		if(bt.getBt_num() < 1)
+			return false;
+		
+		return boardDao.updateBoardType(bt) != 0;
+	}
+	
+	//boardTypeVO 체크 (bt_num)제외
+	private boolean checkBoardType(BoardTypeVO bt) {
 		System.out.println(bt);
 		//bt null체크
 		if(bt == null)
@@ -52,14 +72,12 @@ public class AdminServiceImp implements AdminService{
 		//게시판명 중복 체크
 		//다오에게 게시판명을 주면서 게시판정보를 가져오라고 시킨다
 		BoardTypeVO dbbt = boardDao.selectBoardTypeByName(bt.getBt_name());
-		System.out.println(dbbt);
-		//가져온 게시판 정보가 null이 아니면 false를 return
-		if(dbbt != null)
+		//가져온 게시판 정보가 있는 경우
+		//1. 서로 다른 게시판인데 이름이 중복되는 경우(중복이므로 false)
+		//2. 같은 게시판인 경우(자기자신이므로 true)
+		if(dbbt != null && bt.getBt_num() != dbbt.getBt_num())
 			return false;
-		//Dao에게 게시판 정보를 주면서 DB에 추가하라고 요청. 후에 성공 여부 가져옴
-		int res = boardDao.insertBoardType(bt);
-		return res != 0; //0이 아니면 true, 0이면 false
-	
+		return true;
 	}
 
 

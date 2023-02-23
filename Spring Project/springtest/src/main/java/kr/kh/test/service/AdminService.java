@@ -8,5 +8,7 @@ public interface AdminService {
 
 	ArrayList<BoardTypeVO> getboardTypeListAll();
 
+	boolean insertBoardType(BoardTypeVO bt);
+
 	
 }

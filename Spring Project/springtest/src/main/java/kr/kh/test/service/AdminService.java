@@ -6,7 +6,7 @@ import kr.kh.test.vo.BoardTypeVO;
 
 public interface AdminService {
 
-	ArrayList<BoardTypeVO> getBoardType();
+	ArrayList<BoardTypeVO> getboardTypeListAll();
 
 	
 }

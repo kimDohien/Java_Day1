@@ -22,8 +22,8 @@ public class AdminController {
 	
 	@RequestMapping(value= "/admin/board/type/list")
 	public ModelAndView adminBoardTypeList(ModelAndView mv) { 
-		ArrayList<BoardTypeVO> list = adminService.getBoardType();
-		mv.addObject("list",list);
+		ArrayList<BoardTypeVO> boardTypeList = adminService.getboardTypeListAll();
+		mv.addObject("btList",boardTypeList);
 		mv.setViewName("/admin/boardTypeList");
 		return mv;
 	}

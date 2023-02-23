@@ -3,9 +3,9 @@
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
  <mapper namespace="kr.kh.test.dao.BoardDAO">
- <select id="selectAllBoardType" resultType="kr.kh.test.vo.BoardTypeVO">
-	<![CDATA[
-  		select * from board_type where bt_w_authority <= #{authority}
-  		]]>
+ <select id="selectBoardTypeList" resultType="kr.kh.test.vo.BoardTypeVO">
+	<!-- CDATA쓰기 싫으면 뒤집으면 됨 부호 -->
+  		select * from board_type where bt_w_authority >= #{authority}
+  		
  </select>
  </mapper>

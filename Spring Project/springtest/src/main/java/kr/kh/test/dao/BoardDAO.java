@@ -8,7 +8,7 @@ import kr.kh.test.vo.BoardTypeVO;
 
 public interface BoardDAO {
 
-	ArrayList<BoardTypeVO> selectAllBoardType(@Param("authority")int authority);
+	ArrayList<BoardTypeVO> selectBoardTypeList(@Param("authority")int adminAuthority);
 
 	
 }

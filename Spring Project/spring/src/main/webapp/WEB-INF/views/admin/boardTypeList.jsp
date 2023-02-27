@@ -1,7 +1,6 @@
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
-
+    pageEncoding="UTF-8"%>
 <div class="container">
 	<h1>게시글 타입 리스트</h1>
 	<table class="table table-hover">
@@ -16,7 +15,7 @@
 			</tr>
 		</thead>
 		<tbody>
-			<c:forEach items="${list}" var="bt">
+			<c:forEach items="${list}" var="bt" varStatus="vs">
 				<tr>
 					<form action="<c:url value='/admin/board/type/update'></c:url>" method="post">
 						<td class="form-group">${bt.bt_num }<input type="hidden" name="bt_num" value="${bt.bt_num}"></td>
@@ -82,9 +81,29 @@
 		</tfoot>
 	</table>
 </div>
+<script>
+$('.btn-del').click(function(){
+	let res = confirm('게시글 타입을 삭제하면 해당 게시글 타입에 있는 모든 게시글들이 삭됩니다.\n삭제하시겠습니까?');
+	if(!res)
+		return false;
+	//클릭된 삭제 버튼의 조상 중에 form태그를 찾아서 action부분을 수정
+	let url = '<c:url value="/admin/board/type/delete"></c:url>';
+	$(this).parents('tr').find('form').attr('action', url);
+});
+</script>
 
 
 
-
-
-
+<!-- c:forech를 이용한 1부터 10까지 출력 예제 -->
+<!-- 
+<c:forEach begin="1" end="10" step="1" var="i">
+${i }<br>
+</c:forEach>
+ -->
+<!-- c:foreach를 이용한 리스트의 순번을 출력하는 예제 -->
+<!-- 
+<c:forEach items="${list }" var="bt" varStatus="vs">
+${bt} <br>
+${vs.index }/${vs.count } <br>
+</c:forEach>
+ -->

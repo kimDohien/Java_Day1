@@ -8,6 +8,16 @@ import java.util.UUID;
 import org.springframework.util.FileCopyUtils;
 
 public class UploadFileUtils {
+	
+	public static boolean removeFile(String uploadPath, String fileName) {
+		fileName = fileName.replace("/", File.separator);
+		File file = new File(uploadPath + fileName);
+		if(file.exists()) {
+			return file.delete();
+		}
+		return false;
+	}
+	
 	public static String uploadFile(String uploadPath, String originalName, byte[] 	
 			fileData)throws Exception{
 		//UUID생성(32자 문자 & 4개의 하이픈- 랜덤으로 총 36자 생성)

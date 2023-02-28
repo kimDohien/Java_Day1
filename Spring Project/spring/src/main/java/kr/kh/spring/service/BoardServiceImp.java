@@ -179,4 +179,18 @@ public class BoardServiceImp implements BoardService {
 		deleteFileList(fileList);
 		return boardDao.deleteBoard(bo_num) != 0;
 	}
+
+	@Override
+	public BoardVO getBoardByWriteAuthority(int bo_num, MemberVO user) {
+		//게시글 가져와서 작성자 인지 아닌지만 확인
+		BoardVO board = boardDao.selectBoard(bo_num); 
+		if(board == null)
+			return null;
+		if(user == null)
+			return null;
+		if(user.getMe_id().equals(board.getBo_me_id()))
+			return board;
+		return null;
+
+	}
 }

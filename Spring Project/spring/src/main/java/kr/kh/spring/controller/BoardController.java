@@ -3,6 +3,7 @@ package kr.kh.spring.controller;
 import java.util.ArrayList;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,6 +15,7 @@ import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
 import kr.kh.spring.service.BoardService;
+import kr.kh.spring.utils.MessageUtils;
 import kr.kh.spring.vo.BoardTypeVO;
 import kr.kh.spring.vo.BoardVO;
 import kr.kh.spring.vo.FileVO;
@@ -24,6 +26,8 @@ public class BoardController {
 
 	@Autowired
 	BoardService boardService;
+	
+	
 	
 	@RequestMapping(value = "/board/list", method=RequestMethod.GET)
 	public ModelAndView boardList(ModelAndView mv) {
@@ -67,15 +71,19 @@ public class BoardController {
 	}
 	
 	@RequestMapping(value = "/board/detail/{bo_num}", method=RequestMethod.GET)
-	//경로가 있는경우 pathvariable을 통해 가져올수 있음
-	public ModelAndView boardDetail(ModelAndView mv,@PathVariable("bo_num")int bo_num) {
-		//게시글 & 첨부파일 정보를 가져옴
-		BoardVO  board = boardService.getBoard(bo_num);
+	public ModelAndView boardDetail(ModelAndView mv,
+			@PathVariable("bo_num")int bo_num, HttpSession session,HttpServletResponse response) {
+		MemberVO user = (MemberVO)session.getAttribute("user");
+		BoardVO board = boardService.getBoard(bo_num, user);
 		ArrayList<FileVO> files = boardService.getFileList(bo_num);
-		//작업이 완료되면 화면에 전달
-		mv.addObject("board",board);
-		mv.addObject("files",files);
-		mv.setViewName("/board/detail");
+		
+		mv.addObject("board", board);
+		mv.addObject("files", files);
+		if(board == null) {
+			MessageUtils.alertAndMovePage(response, "삭제되거나 조회권한이 없는 게시글입니다.", "/spring", "/board/list");
+			
+		}else
+			mv.setViewName("/board/detail");
 		return mv;
 	}
 }

@@ -51,4 +51,8 @@
 				<input type="file" class="form-control" name="files" accept="image/*">
 			</div>
 		</div>
+		<div class="">
+			<button class="btn btn-outline-success btn-up">추천</button>
+			<button class="btn btn-outline-danger btn-down">비추천</button>
+		</div>
 </div>

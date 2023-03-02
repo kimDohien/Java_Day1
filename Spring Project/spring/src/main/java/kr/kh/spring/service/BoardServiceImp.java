@@ -193,4 +193,45 @@ public class BoardServiceImp implements BoardService {
 		return null;
 
 	}
+
+	@Override
+	public boolean updateBoard(BoardVO board, MultipartFile[] files, int[] fileNums, MemberVO user) {
+		if(board == null || board.getBo_num() <= 0)
+			return false;
+		if(user == null)
+			return false;
+		//게시글 정보를 가져온다
+		BoardVO dbBoard = boardDao.selectBoard(board.getBo_num());
+		//가져온 게시글이 null인지 확인
+		if(dbBoard == null)
+			return false;
+		//게시글 작성자가 로그인한 회원이 맞는지 확인(비정상적 작업, 세션만료로 인해 로그인 실패 가 있을수 있기때문에 확인)
+		if(!dbBoard.getBo_me_id().equals(user.getMe_id()))
+				return false;
+		
+		//<추가>
+		//추가할 첨부파일 업로드
+			uploadFiles(files, board.getBo_num());
+			
+		//<삭제>	
+		//Dao에게 게시글 정보를 주면서 수정하라고 요청
+		if(boardDao.updateBoard(board) == 0)
+			return false;
+		//fileNums를 이용하여 첨부파일 객체를 가져와서 첨부 파일 리스트에 추가해준다
+		if(fileNums == null || fileNums.length == 0)
+			return true; //삭제할 정보가 없다고 수정에 실패하는게 아니니 true적어줌
+
+		ArrayList<FileVO> fileList = new ArrayList<FileVO>(); 
+		for(int fileNum : fileNums) {
+			FileVO fileVo = boardDao.selectFile(fileNum);
+			if(fileVo != null)
+				fileList.add(fileVo);
+		}
+		
+		//삭제 첨부파일 리스트를 이용하여 첨부파일 삭제
+		deleteFileList(fileList);
+		
+	
+		return true;
+	}
 }

@@ -79,7 +79,7 @@ public class BoardController {
 			@PathVariable("bo_num")int bo_num, HttpSession session,HttpServletResponse response) {
 		MemberVO user = (MemberVO)session.getAttribute("user");
 		BoardVO board = boardService.getBoard(bo_num, user);
-		ArrayList<FileVO> files = boardService.getFileList(bo_num);
+		ArrayList<FileVO> files = boardService.getFileList(bo_num); //첨부파일 가져오는 부분
 		//추천 비추천 가져옴
 		LikesVO likesVo = boardService.getLikes(bo_num, user);
 		
@@ -128,6 +128,7 @@ public class BoardController {
 		//세션에 있는 회원 정보 가져옴. 작성자 와 아이디가 같은지 확인하려고
 		MemberVO user = (MemberVO)session.getAttribute("user");
 		BoardVO board = boardService.getBoardByWriteAuthority(bo_num, user);
+		ArrayList<FileVO> files = boardService.getFileList(bo_num);
 		if(board == null) {
 			MessageUtils.alertAndMovePage(response, "작성자가 아니거나 존재하지 않는 게시글 입니다", "/spring", "/board/list");
 		}else {
@@ -136,6 +137,7 @@ public class BoardController {
 			ArrayList<BoardTypeVO> btList = 
 					boardService.getBoardType(user.getMe_authority());
 			mv.addObject("btList", btList);
+			mv.addObject("files", files);
 			//작성할 타입이 없으면 작성 페이지로 갈 필요가 없어서 
 			//게시글 리스트로 이동시킴
 			if(btList.size() == 0) {
@@ -143,6 +145,25 @@ public class BoardController {
 						"권한이 없으므로 작성할수 있는 게시판이 없습니다.", "/spring", "/board/list");
 			}else
 				mv.setViewName("/board/update");
+		}
+		return mv;
+	}
+	
+	@RequestMapping(value = "/board/update/{bo_num}", method=RequestMethod.POST)
+	public ModelAndView boardUpdatePost(ModelAndView mv, 
+			HttpSession session,
+			@PathVariable("bo_num")int bo_num,
+			BoardVO board, //수정할 게시글 정보
+			MultipartFile []files, //추가된 첨부파일
+			int [] fileNums, //삭제될 첨부파일,
+			HttpServletResponse response
+			) {
+		//세션에 있는 회원 정보 가져옴. 작성자 와 아이디가 같은지 확인하려고
+		MemberVO user = (MemberVO)session.getAttribute("user");
+		if(boardService.updateBoard(board,files,fileNums,user)) {
+			MessageUtils.alertAndMovePage(response, "게시글 수정이 완료됐습니다", "/spring", "/board/detail/"+bo_num);
+		}else {
+			MessageUtils.alertAndMovePage(response, "게시글 수정 실패", "/spring", "/board/list");
 		}
 		return mv;
 	}

@@ -63,16 +63,18 @@
 						<div class="file-box">+</div>
 							<input type="file" class="form-control" name="files" accept="image/*" onchange="readURL(this)">
 							<img class="preview" height="200" width="auto">
-						</div>
+					</div>
+						<div>
 						<div class="file-box">+</div>
 							<input type="file" class="form-control" name="files" accept="image/*" onchange="readURL(this)">
 							<img class="preview" height="200" width="auto">
-						</div>
+					</div>
+						<div>
 						<div class="file-box">+</div>
 							<input type="file" class="form-control" name="files" accept="image/*" onchange="readURL(this)">
 							<img class="preview" height="200" width="auto">
-						</div>
-				
+					</div>
+						
 				</div>
 			</div>
 		<button class="btn btn-outline-success col-12 mt-3">게시글 작성</button>

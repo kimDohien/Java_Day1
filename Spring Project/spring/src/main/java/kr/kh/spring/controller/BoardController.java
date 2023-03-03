@@ -44,8 +44,10 @@ public class BoardController {
 		//페이지네이션
 		int totalCount = boardService.getBoardTotalCount(cri);
 		PageMaker pm = new PageMaker(totalCount,3,cri);//한 페이지의 게시글 개수를 3개로 
+		ArrayList<BoardTypeVO> typeList = boardService.getBoardType(9);//관리자권한으로 typeList가져옴
 		mv.addObject("list",list);
 		mv.addObject("pm",pm);
+		mv.addObject("typeList",typeList);
 		mv.setViewName("/board/list");
 		return mv;
 	}

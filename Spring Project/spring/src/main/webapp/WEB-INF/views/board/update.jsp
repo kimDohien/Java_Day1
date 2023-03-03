@@ -33,6 +33,18 @@
 	float: left;
 	margin-right: 20px;
 }
+#image .btn-times{
+	position: absolute;
+	top : 5px; right:5px; width:30px; height:30px;
+	border : 1px solid black;
+	background : #fff;
+	text-align : center;
+	line-height : 27px;
+	font-size : 25px;
+	border-radius : 5px;
+	cursor : pointer;
+}
+
 </style>
 <div class="container">
 	<h1>게시글 수정</h1>
@@ -79,12 +91,11 @@
 			<label>이미지:</label>
 			<div class="form-group mt-3">
 				<c:forEach items="${files}" var="file">
-					<div>
+					<div style="position : relative">
 						<div class="file-box" style="display: none">+</div>
-						<input type="file" class="form-control" name="files"
-							accept="image/*" onchange="readURL(this);"> <img
-							class="preview" height="200" width="auto"
-							src="<c:url value="/download${file.fi_name}"></c:url>">
+						<input type="file" class="form-control" name="files" accept="image/*" onchange="readURL(this);"> 
+						<img class="preview" height="200" width="auto" src="<c:url value="/download${file.fi_name}"></c:url>">
+						<span class="btn-times" data-num="${file.fi_num}">X</span>
 					</div>
 				</c:forEach>
 				<c:forEach begin="1" end="${3 - files.size()}">
@@ -120,21 +131,27 @@ $('#type').change(function(){
 	}
 });
 $('form').submit(function(){
-	let bo_bt_num = $('[name=bo_bt_num]').val();
-	if(bo_bt_num  == 0){
-		alert('게시판을 선택하세요.');
-		$('[name=bo_bt_num]').focus();
-		return false;
-	}
-	let bo_title = $('[name=bo_title]').val();
-	if(bo_title.trim().length  == 0){
-		alert('제목을 입력하세요.');
-		$('[name=bo_title]').focus();
-		return false;
-	}
 	let bo_content = $('[name=bo_content]').val();
-	if(bo_content.trim().length  == 0){
+	if(bo_content.trim().length  == 0 && common.indexOf($('#type').val())>=0 ){
 		alert('내용을 입력하세요.');
+		return false;
+	}
+	//이미지게시판에서 이미지가 1개이상 선택이 되어야 전송되도록 유효성 검사
+	if(common.indexOf($('#type').val()) < 0){
+		let images = image.querySelectorAll('[type=file]');
+		for(i = 0; i<images.length; i++){
+			if(images[i].files && images[i].files[0])
+				return true;
+		}
+		//기존 이미지 갯수
+		let imgCount = '${files.size()}';
+		//삭제 될 기존 이미지 개수
+		let deleteImgCount = image.querySelectorAll('[name=fileNums]').length();
+		//기존 이미지가 모두 삭제된게 아니면
+		if(imgCount - deleteImgCount != 0)
+			return false;
+		//기존 이미지가 모두 삭제되면 
+		alert('이미지를 1개 이상 선택하세요.');
 		return false;
 	}
 });
@@ -153,7 +170,7 @@ else
 	
 $('#content').summernote('code','${board.bo_content}')
 
-$('.btn-times').click(function(e){ //버블링 효과 막아주기
+$('#common .btn-times').click(function(e){ //버블링 효과 막아주기
 	e.preventDefault();
 	$('.files').append('<input type="file" class="form-control" name="files">');
 	$('.files').append('<input type="hidden" name="fileNums" value="'+$(this).data('num')+'">');//서버에서 삭제하도록 요청
@@ -163,6 +180,17 @@ $('.btn-times').click(function(e){ //버블링 효과 막아주기
 $('.file-box, .preview').click(function(){
 	$(this).siblings('input').click();
 });
+
+$('#image .btn-times').click(function(){
+	//x버튼을 눌렀을때 첨부되었던 이미지 가 없어져면서 + 모양으로 바꿔주는 화면상 역할
+	$(this).siblings('.preview').attr('src',''); //잘못된 src를 넣으면 잘못된파일이 뜨기때문에 아예 없음을 넣어줌
+	$(this).siblings('.file-box').show();
+	$(this).parent().detach().appendTo('#image>div');//부모를 떼서 제일 끝으로 보내줌
+	//input태그로 삭제할 첨부파일 번호를 서버에 전송하기 위한 준비 작업
+	$(this).after('<input type="hidden" name="fileNums" value="'+$(this).data('num')+'">');
+	$(this).remove();//x버튼을 지워줌
+});
+
 function readURL(input){
 	if(!input.files || !input.files[0]){
 		input.nextElementSibling.src = '';

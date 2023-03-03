@@ -6,11 +6,38 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>스터디 모집</title>
-    <link rel="stylesheet" href="recruit.css">
+    <link rel="stylesheet" href="../css/recruit.css">
 </head>
 
 <body>
+    <!-- background -->
+    <div class="background_bbls">
+        <div class="big_bbls">
+          <div class="bubble"></div>
+          <div class="bubble"></div>
+          <div class="bubble"></div>
+          <div class="bubble"></div>
+        </div>
+        <div class="small_bbls">
+          <div class="bubble"></div>
+          <div class="bubble"></div>
+        </div>
+      </div>
     <!-- Header -->
+    <!-- background -->
+    <div class="background_bbls">
+        <div class="big_bbls">
+          <div class="bubble"></div>
+          <div class="bubble"></div>
+          <div class="bubble"></div>
+          <div class="bubble"></div>
+        </div>
+        <div class="small_bbls">
+          <div class="bubble"></div>
+          <div class="bubble"></div>
+        </div>
+      </div>
+    <div id="total_container">
     <header>
         <div id="header_container">
             <div class="header_left">
@@ -33,12 +60,18 @@
         <!-- 검색창 -->
         <section>
             <div class="search_container">
-                <input type="text" class="search search_title" name="search_title" placeholder="    제목으로 검색하기">
-                <input type="text" class="search search_tag" placeholder="    # 태그로 검색하기">
+                <div class="search_content">
+                    <input type="text" class="search_title" placeholder="제목으로 검색하기">
+                    <img class="icon_search" src="../img/serch.png" alt="">
+                </div>
+                <div class="search_content">
+                    <input type="text" class="search_tag" placeholder="# 태그로 검색하기">
+                    <img class="icon_search" src="../img/serch.png" alt="">
+                </div>
                 <div class="tag_box">
-                    <span>관련 태그 : </span>
+                    <span class="tag_box_name">관련 태그 : </span>
                     <a href="#" class="hashTag">#자격증</a>
-                    <a href="#" class="hashTag">#자격증</a>
+                    <a href="#" class="hashTag">#독서토론모임</a>
                     <a href="#" class="hashTag">#자격증</a>
                     <a href="#" class="hashTag">#자격증</a>
                     <a href="#" class="hashTag">#자격증</a>
@@ -54,19 +87,24 @@
                         <span class="recruit_state_title">모집중</span>
                         <input type="checkbox" id="recruit_switch">
                         <label for="switch" class="switch_label">
-                            <span>ON</span>
+                            <span class="switch_on">ON</span>
                             <span class="switch_btn"></span>
                         </label>
                     </div>
                     <div class="recruit_tag_box ">
                         <span id="tag_title">#태그</span>
                         <div class="selectd_tag clearfix">
-                            <a href="#" class="sel_hashTag">#자격증</a>
-                            <a href="#" class="sel_hashTag">#자격증</a>
-                          
+                            <a href="#" class="sel_hashTag">#자격증<button class="delete_tag"> X</button></a>
+                            <a href="#" class="sel_hashTag">#자격증<button class="delete_tag"> X</button></a>
+                            <a href="#" class="sel_hashTag">#자격증<button class="delete_tag"> X</button></a>
+                            <a href="#" class="sel_hashTag">#자격증<button class="delete_tag"> X</button></a>
+                            <a href="#" class="sel_hashTag">#자격증<button class="delete_tag"> X</button></a>
+                            <a href="#" class="sel_hashTag">#자격증<button class="delete_tag"> X</button></a>
+                            <a href="#" class="sel_hashTag">#자격증<button class="delete_tag"> X</button></a>
+                            <a href="#" class="sel_hashTag">#독서토론<button class="delete_tag"> X</button></a>
                         </div>
                     </div>
-                    <div class="line .clearfix"></div>
+                    <div class="line"></div>
                     <div class="sel_region clearfix">
                         <span class="region_title">지역</span>
                         <a href="#" class="selected">지역 미지정</a>
@@ -87,8 +125,10 @@
                         <a href="#">울산 광역시</a>
                         <a href="#">제주 특별 자치도</a>
                         <a href="#">세종 특별 자치도</a>
+                        <button class="make_project">프로젝트 생성</button>
                     </div>
                 </div>
+                
             </section>
             <section>
                 <div class="study_card_container">
@@ -100,13 +140,16 @@
                                     <div class="study_info">
                                         <div class="study_tag_info">
                                             <span href="#" class="study_tag">#자격증</span>
-                                            <span href="#" class="study_tag">#자격증</span>
-                                            <span href="#" class="study_tag">#자격증</span>
-                                            <span href="#" class="study_tag">#자격증</span>
-                                            <span href="#" class="study_tag">#자격증</span>
-                                            <span href="#" class="study_tag">#자격증</span>
+                                            <span href="#" class="study_tag">#프로젝트</span>
+                                            <span href="#" class="study_tag">#컴퓨터</span>
+                                            <span href="#" class="study_tag">#독서토론</span>
+                                            <span href="#" class="study_tag">#운동</span>
+                                            <span href="#" class="study_tag">#경제학과</span>
+                                            
                                         </div>
-                                        <span class="study_recruit_content">[ 서울 ] 정처기 같이 공부해요 </span>
+                                        <div class="study_recruit_content_box">
+                                            <span class="study_recruit_content">[ 서울 ] 정처기 같이 공부해요 </span>
+                                           </div>
                                         <div class="study_content">
                                             <div class="study_recruiting">
                                                 <span>모집중</span>
@@ -125,13 +168,15 @@
                                     <div class="study_info">
                                         <div class="study_tag_info">
                                             <span href="#" class="study_tag">#자격증</span>
-                                            <span href="#" class="study_tag">#자격증</span>
-                                            <span href="#" class="study_tag">#자격증</span>
-                                            <span href="#" class="study_tag">#자격증</span>
-                                            <span href="#" class="study_tag">#자격증</span>
-                                            <span href="#" class="study_tag">#자격증</span>
+                                            <span href="#" class="study_tag">#PROJECTMAN</span>
+                                            <span href="#" class="study_tag">#컴퓨터</span>
+                                            <span href="#" class="study_tag">#독서토론</span>
+                                            <span href="#" class="study_tag">#운동</span>
+                                            <span href="#" class="study_tag">#경제학과</span>
                                         </div>
-                                        <span class="study_recruit_content">[ 서울 ] 정처기 같이 공부해요 </span>
+                                        <div class="study_recruit_content_box">
+                                         <span class="study_recruit_content">[ 서울 ] 정처기 같이 공부해요 만나서반가워요 </span>
+                                        </div>
                                         <div class="study_content">
                                             <div class="study_recruiting">
                                                 <span>모집중</span>
@@ -143,25 +188,28 @@
                                         </div>
                                     </div>
                                 </a>
-                            </li>                           <li class="study_card_box add_shadow">
+                            </li>                           
+                            <li class="study_card_box add_shadow">
                                 <a href="">
                                     <div class="study_img_box"></div>
                                     <div class="study_info">
                                         <div class="study_tag_info">
                                             <span href="#" class="study_tag">#자격증</span>
-                                            <span href="#" class="study_tag">#자격증</span>
-                                            <span href="#" class="study_tag">#자격증</span>
-                                            <span href="#" class="study_tag">#자격증</span>
-                                            <span href="#" class="study_tag">#자격증</span>
-                                            <span href="#" class="study_tag">#자격증</span>
+                                            <span href="#" class="study_tag">#프로젝트</span>
+                                            <span href="#" class="study_tag">#컴퓨터</span>
+                                            <span href="#" class="study_tag">#독서토론</span>
+                                            <span href="#" class="study_tag">#운동</span>
+                                            <span href="#" class="study_tag">#경제학과</span>
                                         </div>
-                                        <span class="study_recruit_content">[ 서울 ] 정처기 같이 공부해요 </span>
+                                        <div class="study_recruit_content_box">
+                                            <span class="study_recruit_content">[ 서울 ] 정처기 같이 공부해요 </span>
+                                           </div>
                                         <div class="study_content">
                                             <div class="study_recruiting">
                                                 <span>모집중</span>
-                                                <span>1</span>
+                                                <span>1</span> 
                                                 <span>/</span>
-                                                <span>5</span>
+                                                <span>10</span>
                                             </div>
                                             <div class="like_img"></div>
                                         </div>
@@ -176,13 +224,15 @@
                                     <div class="study_info">
                                         <div class="study_tag_info">
                                             <span href="#" class="study_tag">#자격증</span>
-                                            <span href="#" class="study_tag">#자격증</span>
-                                            <span href="#" class="study_tag">#자격증</span>
+                                            <span href="#" class="study_tag">#경제학과</span>
+                                            <span href="#" class="study_tag">#독서토론</span>
                                             <span href="#" class="study_tag">#자격증</span>
                                             <span href="#" class="study_tag">#자격증</span>
                                             <span href="#" class="study_tag">#자격증</span>
                                         </div>
-                                        <span class="study_recruit_content">[ 서울 ] 정처기 같이 공부해요 </span>
+                                        <div class="study_recruit_content_box">
+                                            <span class="study_recruit_content">[ 서울 ] 정처기 같이 공부해요 </span>
+                                           </div>
                                         <div class="study_content">
                                             <div class="study_recruiting">
                                                 <span>모집중</span>
@@ -207,7 +257,9 @@
                                             <span href="#" class="study_tag">#자격증</span>
                                             <span href="#" class="study_tag">#자격증</span>
                                         </div>
-                                        <span class="study_recruit_content">[ 서울 ] 정처기 같이 공부해요 </span>
+                                        <div class="study_recruit_content_box">
+                                            <span class="study_recruit_content">[ 서울 ] 정처기 같이 공부해요 </span>
+                                           </div>
                                         <div class="study_content">
                                             <div class="study_recruiting">
                                                 <span>모집중</span>
@@ -231,7 +283,9 @@
                                             <span href="#" class="study_tag">#자격증</span>
                                             <span href="#" class="study_tag">#자격증</span>
                                         </div>
-                                        <span class="study_recruit_content">[ 서울 ] 정처기 같이 공부해요 </span>
+                                        <div class="study_recruit_content_box">
+                                            <span class="study_recruit_content">[ 서울 ] 정처기 같이 공부해요 </span>
+                                           </div>
                                         <div class="study_content">
                                             <div class="study_recruiting">
                                                 <span>모집중</span>
@@ -258,7 +312,9 @@
                                             <span href="#" class="study_tag">#자격증</span>
                                             <span href="#" class="study_tag">#자격증</span>
                                         </div>
-                                        <span class="study_recruit_content">[ 서울 ] 정처기 같이 공부해요 </span>
+                                        <div class="study_recruit_content_box">
+                                            <span class="study_recruit_content">[ 서울 ] 정처기 같이 공부해요 </span>
+                                           </div>
                                         <div class="study_content">
                                             <div class="study_recruiting">
                                                 <span>모집중</span>
@@ -283,7 +339,9 @@
                                             <span href="#" class="study_tag">#자격증</span>
                                             <span href="#" class="study_tag">#자격증</span>
                                         </div>
-                                        <span class="study_recruit_content">[ 서울 ] 정처기 같이 공부해요 </span>
+                                        <div class="study_recruit_content_box">
+                                            <span class="study_recruit_content">[ 서울 ] 정처기 같이 공부해요 </span>
+                                           </div>
                                         <div class="study_content">
                                             <div class="study_recruiting">
                                                 <span>모집중</span>
@@ -307,7 +365,9 @@
                                             <span href="#" class="study_tag">#자격증</span>
                                             <span href="#" class="study_tag">#자격증</span>
                                         </div>
-                                        <span class="study_recruit_content">[ 서울 ] 정처기 같이 공부해요 </span>
+                                        <div class="study_recruit_content_box">
+                                            <span class="study_recruit_content">[ 서울 ] 정처기 같이 공부해요 </span>
+                                           </div>
                                         <div class="study_content">
                                             <div class="study_recruiting">
                                                 <span>모집중</span>
@@ -322,6 +382,7 @@
                             </li>
                         </div>
                     </ul>
+                    <button class="make_recruit">프로젝트 생성</button>
                     <div class="page_box clearfix">
                         <i class="btn_prev"></i>
                         <span class="page_num selected">1</span>
@@ -332,7 +393,6 @@
                         <i class="btn_next"></i>
                     </div>
                 </div>
-               
             </section>
         </div>
         </section>
@@ -344,7 +404,7 @@
 			<a href="#" class="btn_home"><i class="icon_home"></i>LAB</a>
 			<!-- 관련 정보 섹션 -->
 			<section>
-				<div class="info_container clearfilox">
+				<div class="info_container clearfix">
 					<div class="direct_num_box">
 						<h1 class="info_title">대표번호 : 123-4567</h1>
 						<ul class="list_tel">
@@ -424,6 +484,7 @@
 			</section>
 		</div>
     </footer>
+</div>
 </body>
 
 </html>

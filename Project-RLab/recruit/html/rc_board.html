@@ -1,0 +1,183 @@
+<!DOCTYPE html> 
+<html lang="en"> 
+<head> 
+    <meta charset="UTF-8"> 
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"> 
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
+    <title>모집 게시글</title> 
+    <link rel="stylesheet" href="../css/rc_board.css"> 
+		<script src="../js/jquery-3.5.1.min.js"></script>
+		<script src="../js/summerNote/summernote-lite.js"></script>
+		<script src="../js/summerNote/summernote-ko-KR.min.js"></script>
+		<link rel="stylesheet" href="../js/summerNote/summernote-lite.min.css">
+</head> 
+<body> 
+        <!-- background --> 
+        <div class="background_bbls"> 
+          <div class="big_bbls"> 
+            <div class="bubble"></div> 
+            <div class="bubble"></div> 
+            <div class="bubble"></div> 
+            <div class="bubble"></div> 
+          </div> 
+          <div class="small_bbls"> 
+            <div class="bubble"></div> 
+            <div class="bubble"></div> 
+          </div> 
+        </div> 
+        <div id="total_container"> 
+          <!-- header --> 
+          <header> 
+            <div id="header_container"> 
+              <div class="header_left"> 
+                <a href="#" class="btn_home"><i class="icon_home"></i>LAB</a> 
+                <nav class="top_menu_container"> 
+                  <a href="#" class="list_item">예약하기</a> 
+                  <a href="#" class="list_item">스터디</a> 
+                  <a href="#" class="list_item">모집 게시판</a> 
+                </nav> 
+              </div> 
+              <div class="header_right"> 
+                <div class="mypage_container"> 
+                  <a href="#" class="mypage"> 
+                    <i class="icon_mypage"></i> 
+                    <span class="blind">마이페이지</span></a> 
+                </div> 
+              </div> 
+            </div> 
+          </header> 
+          <!-- main --> 
+          <main> 
+            <div id="main_container"> 
+              <div class="main_title"> 
+                <h1>모집글 작성</h1> 
+              </div> 
+              <div class="temporary_storage_box"> 
+                <button class="call_temporary_storage">임시저장 불러오기
+									<span>|</span> 
+									<span>1</span> 
+								</button> 
+              </div> 
+              <form > 
+                <h2>모집할스터디</h2> 
+                <select id="choose_study"> 
+                  <option value="1">정처기 준비하는 스터디</option> 
+                  <option value="2">독서 모임 토론</option> 
+                  <option value="3">모각코</option> 
+                  <option value="4">모집할 스터디</option> 
+                </select> 
+                <h2>제목</h2> 
+                <div class="recruit_title_box"> 
+                  <input type="text" class="recruit_title" placeholder="제목 10자 이내"> 
+                </div> 
+                <h2>내용</h2> 
+								<textarea class="summernote" name="editordata"></textarea>  
+              </form> 
+							<div class="btn_box">
+								<button class="ts_btn">임시저장</button>
+								<button class="write_complete_btn">작성완료</button>
+							</div>
+           </div> 
+          </main> 
+          <!-- footer --> 
+          <footer> 
+            <div class="container"> 
+              <a href="#" class="btn_home"><i class="icon_home"></i>LAB</a> 
+              <!-- 관련 정보 섹션 --> 
+              <section> 
+                <div class="info_container clearfix"> 
+                  <div class="direct_num_box"> 
+                    <h1 class="info_title">대표번호 : 123-4567</h1> 
+                    <ul class="list_tel"> 
+                      <li class="item_tel"> 
+                        <a href="" class="link_tel">강남 1566-1234</a> 
+                      </li> 
+                      <li class="item_tel"> 
+                        <a href="" class="link_tel">선릉 1566-1234</a> 
+                      </li> 
+                      <li class="item_tel"> 
+                        <a href="" class="link_tel">성수 1566-1234</a> 
+                      </li> 
+                      <li class="item_tel"> 
+                        <a href="" class="link_tel">노원 1566-1234</a> 
+                      </li> 
+                      <li class="item_tel"> 
+                        <a href="" class="link_tel">군자 1566-1234</a> 
+                      </li> 
+                    </ul> 
+                  </div> 
+                  <div class="info_right_container"> 
+                    <div class="info_box_right about_us_box"> 
+                      <h3 class="info_title">ABOUT US</h3> 
+                      <ul> 
+                        <li> 
+                          <a href="#">지점 소개</a> 
+                        </li> 
+                      </ul> 
+                    </div> 
+                    <div class="info_box_right link_to_box"> 
+                      <h3 class="info_title">LINK TO</h3> 
+                      <ul> 
+                        <li class="item_linkto"> 
+                          <a href="#" class="link_linkto">예약하기</a> 
+                        </li> 
+                        <li class="item_linkto"> 
+                          <a href="#" class="link_linkto">스터디</a> 
+                        </li> 
+                        <li class="item_linkto"> 
+                          <a href="#" class="link_linkto">모집 게시판</a> 
+                        </li> 
+                        <li class="item_linkto"> 
+                          <a href="#" class="link_linkto">마이페이지</a> 
+                        </li> 
+                      </ul> 
+                    </div> 
+                    <div class="info_box_right my_account_box"> 
+                      <h3 class="info_title">MT ACCOUNT</h3> 
+                      <ul> 
+                        <li class="item_member">회원 정보 수정</li> 
+                        <li class="item_member">예약 확인</li> 
+                        <li class="item_member">포인트 조회</li> 
+                      </ul> 
+                    </div> 
+                    <div class="info_box_right help_box"> 
+                      <h3 class="info_title">HELP</h3> 
+                      <ul> 
+                        <li class="item_help">1:1 문의</li> 
+                        <li class="item_help">공지사항</li> 
+                        <li class="item_help">F&Q</li> 
+                        <li class="item_help">가맹점 문의</li> 
+                      </ul> 
+                    </div> 
+                  </div> 
+                </div> 
+              </section> 
+              <!-- 프로젝트 정보 섹션 --> 
+              <section> 
+                <div class="corp_container"> 
+                  <a href="#" class="link_corp">RLAB스터디</a> 
+                  <a href="#" class="link_corp">사업자등록번호 : 12123-15142435</a> 
+                  <a href="#" class="link_corp">서울 강남 제214-01호</a> 
+                  <a href="#" class="link_corp">대표자 : 김세영</a> 
+                  <a href="#" class="link_corp">책임자 : 김세영</a> 
+                  <a href="#" class="link_corp">개인정보관리책임자 : 김세영</a> 
+                </div> 
+              </section> 
+            </div> 
+          </footer> 
+        </div> 
+
+		<!-- 썸머노트 -->
+		<script>
+			$('.summernote').summernote({
+			height: 450,
+			lang: "ko-KR",
+			backColor : "white"
+			});
+		</script>
+
+</body> 
+
+
+
+</html>

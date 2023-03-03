@@ -17,6 +17,8 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
+import kr.kh.spring.pagination.Criteria;
+import kr.kh.spring.pagination.PageMaker;
 import kr.kh.spring.service.BoardService;
 import kr.kh.spring.utils.MessageUtils;
 import kr.kh.spring.vo.BoardTypeVO;
@@ -34,11 +36,16 @@ public class BoardController {
 	
 	
 	@RequestMapping(value = "/board/list", method=RequestMethod.GET)
-	public ModelAndView boardList(ModelAndView mv) {
+	public ModelAndView boardList(ModelAndView mv, Criteria cri) {
 		//우선 전체 게시글을 가져오는 코드로 작성하고
 		//추후에 페이지네이션 및 검색 기능을 적용
-		ArrayList<BoardVO> list = boardService.getBoardList();
+		cri.setPerPageNum(2);
+		ArrayList<BoardVO> list = boardService.getBoardList(cri);
+		//페이지네이션
+		int totalCount = boardService.getBoardTotalCount(cri);
+		PageMaker pm = new PageMaker(totalCount,3,cri);//한 페이지의 게시글 개수를 3개로 
 		mv.addObject("list",list);
+		mv.addObject("pm",pm);
 		mv.setViewName("/board/list");
 		return mv;
 	}

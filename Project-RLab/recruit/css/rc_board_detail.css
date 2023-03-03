@@ -168,6 +168,113 @@
       vertical-align: -5px;
     }
 
+    /*내용*/
+    .main_total_box{
+      display: flex;
+      justify-content: space-between;
+    }
+    .main_total_box .main_left_box{
+      border: 1px solid black;
+      width: 700px ;
+      height: 600px;
+      padding: 50px;
+      border-radius: var(--border_radius_3);
+    
+    }
+    .main_total_box .main_right_box{
+      border: 1px solid black;
+      width: 300px;
+      height: 500px;
+      border-radius: var(--border_radius_3);
+    }
+    .main_right_box .rc_img_box{
+      display: grid;
+      place-items: center;
+      height: 200px;
+      background-color: var(--color_blue);
+      border-top-left-radius : var(--border_radius_3);
+      border-top-right-radius : var(--border_radius_3);
+     
+    }
+    .main_right_box .rc_img{
+      margin-top: 25px;
+      width: 200px;
+      height: 200px;
+      border-radius: 50%;
+      background-image: url(../img/study_img.jpeg);
+      border: 1px solid black;
+      place-items: center;
+    }
+    .main_right_box .rc_info_box{
+      width: 260px;
+      height: 241px;
+      background-color: #fff;
+      border-bottom-left-radius: var(--border_radius_3);
+      border-bottom-right-radius: var(--border_radius_3);
+      padding: 39px 20px 20px 20px;
+    }
+    .study_recruit_content_box{
+     display: flex; 
+     font-size: 25px;
+     margin-bottom: 20px;
+
+     justify-content: center;
+    }
+    .study_content{
+      display: flex; 
+      justify-content: space-between;
+    
+    }
+    .study_content .study_recruiting{
+      border: 2px solid var(--color_black);
+      background-color: var(--color_yellow);
+      text-align: center;
+      border-radius: var(--border_radius_4);
+      color: var(--color_black);
+      font-size: 16px;
+      width: 116px;
+      height: 37px;
+      line-height: 38px;
+    }
+     .study_content .like_img{
+      width: 40px; 
+      height: 40px;
+      background-image: url(../img/like_on_red\ copy.png);
+      background-size: cover;
+    }
+    .study_tag_info{
+      display: flex;
+      column-gap: 5px;
+      row-gap: 5px;
+      flex-wrap: wrap;
+      margin-top:20px;
+      overflow: hidden;
+      box-sizing: border-box;
+    }
+    .main_right_box .study_tag{
+      border-radius: var(--border_radius_2); 
+      text-decoration: none; 
+      background-color: var(--color_blue);
+      color: var(--color_black); 
+      text-align :center;
+      font-size: 13px;
+      padding: 5px 10px;
+    }
+    .main_right_box .study_tag_info :nth-child(2n){
+      background-color: var(--color_mint);
+    }
+    .main_right_box .apply_btn{
+      margin-top: 18px;
+      width: 260px;
+      height: 50px;
+      font-size: 25px;
+      border-radius: var(--border_radius_4);
+      background-color: var(--color_yellow)
+    }
+ 
+
+    
+
 
 
   

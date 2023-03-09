@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
 import kr.kh.test.dao.BoardDAO;
+import kr.kh.test.pagination.Criteria;
 import kr.kh.test.utils.UploadFileUtils;
 import kr.kh.test.vo.BoardTypeVO;
 import kr.kh.test.vo.BoardVO;
@@ -22,7 +23,7 @@ public class BoardServiceImp implements BoardService {
 		String uploadPath= "D:\\uploadfiles";
 		
 		@Override
-		public ArrayList<BoardTypeVO> getBoardType(MemberVO user) {
+		public ArrayList<BoardTypeVO> getBoardTypeList(MemberVO user) {
 			if(user == null || user.getMe_authority() == 0)
 				return null;	
 			return boardDao.selectBoardTypeList(user.getMe_authority());
@@ -70,6 +71,37 @@ public class BoardServiceImp implements BoardService {
 			return true;
 
 		}
+
+		@Override
+		public ArrayList<BoardVO> getBoardList(Criteria cri) {
+			if(cri == null)
+				cri = new Criteria();
+			//위 if문을 cri = cri == null ? new Criteria() : cri;
+			return boardDao.selectBoardList(cri);
+		}
+
+		@Override
+		public int getBoardTotalCount(Criteria cri) {
+			cri = cri == null ? new Criteria() : cri;
+			return boardDao.selectTotalCountBoard(cri);
+		}
+
+		@Override
+		public BoardVO getBoardAndUpdateView(int bo_num) {
+			int res ;
+			res = boardDao.updateViews(bo_num);//조회수증가하도록
+			if(res == 0)
+				return null;
+			return boardDao.selectBoard(bo_num);
+		}
+
+		@Override
+		public ArrayList<FileVO> getFileList(int bo_num) {
+			return boardDao.selectFileList(bo_num);
+		}
+
+
+	
 
 		
 		

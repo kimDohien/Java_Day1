@@ -52,7 +52,6 @@
 	<form class="input-group mb-3" action="<c:url value='/board/list'></c:url>">
 		<select class="input-group-prepend" name="type">
 			<c:forEach items="${typeList}" var="type">
-				
 				<option value="${type.bt_num}" <c:if test="${pm.cri.type == type.bt_num}">selected</c:if>>${type.bt_name}</option>
 			</c:forEach>
 		</select>

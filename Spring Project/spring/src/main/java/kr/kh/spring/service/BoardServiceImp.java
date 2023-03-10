@@ -41,7 +41,7 @@ public class BoardServiceImp implements BoardService {
 			} catch (Exception e) {
 				e.printStackTrace();
 			} 
-			System.out.println(fileName);
+//			System.out.println(fileName);
 			//첨부파일 객체를 생성
 			FileVO fileVo = new FileVO(file.getOriginalFilename(),fileName,bo_num);
 			//다오에게 첨부파일 정보를 주면서 추가하라고 요청

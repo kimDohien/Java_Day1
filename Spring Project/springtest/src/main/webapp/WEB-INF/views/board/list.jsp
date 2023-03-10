@@ -19,7 +19,7 @@
 				<td>${board.bo_num}</td>
 				<td>
 					<a href="<c:url value='/board/detail/${board.bo_num }'></c:url>">
-					${board.bo_title }
+						${board.bo_title }
 					</a>
 				</td>
 				<td>${board.bo_me_id }</td>
@@ -57,3 +57,6 @@
 		<button class="btn btn-success" type="submit">검색</button>
 	</div>
 </form>
+<c:if test="${user != null }">
+	<a class="btn btn-outline-success" href="<c:url value='/board/insert'></c:url>">글쓰기</a>
+</c:if>

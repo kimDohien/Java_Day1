@@ -9,6 +9,7 @@ import kr.kh.test.vo.BoardTypeVO;
 import kr.kh.test.vo.MemberVO;
 import kr.kh.test.vo.BoardVO;
 import kr.kh.test.vo.FileVO;
+import kr.kh.test.vo.LikesVO;
 
 public interface BoardService {
 
@@ -31,6 +32,10 @@ public interface BoardService {
 	boolean updateBoard(BoardVO board, MemberVO user, MultipartFile[] files, int[] fileNums);
 
 	int updateLike(int li_bo_num, int li_state, MemberVO user);
+
+	LikesVO getLikes(MemberVO user, int bo_num);
+
+
 
 	
 }

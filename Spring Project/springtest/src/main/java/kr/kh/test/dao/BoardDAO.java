@@ -52,5 +52,6 @@ public interface BoardDAO {
 	void updateLikes(@Param("li")LikesVO likesVo);
 
 	void updateBoardUpAndDown(@Param("li_bo_num")int li_bo_num);
+
 	
 }

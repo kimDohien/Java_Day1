@@ -51,5 +51,7 @@ public interface BoardDAO {
 	void updateBoardByLikes(@Param("bo_num")int bo_num);
 
 	int selectBoardTotalCount(@Param("cri")Criteria cri);
+	
+	
 
 }

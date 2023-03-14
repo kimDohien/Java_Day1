@@ -15,7 +15,8 @@ label.error {
 			<label for="id">아이디:</label> <input type="text" class="form-control"
 				id="id" name="me_id">
 		</div>
-		<button class="btn btn-outline-success col-12" type="button" onclick="alert('추후구현')">아이디 중복체크</button>
+		<button class="btn btn-outline-success col-12 btn-check-id"
+			type="button">아이디 중복체크</button>
 		<div class="form-group">
 			<label for="pw">비번:</label> <input type="password"
 				class="form-control" id="pw" name="me_pw">
@@ -35,9 +36,9 @@ label.error {
 		<button class="btn btn-outline-success col-12">회원가입</button>
 	</form>
 </div>
-<script	src="<c:url value='/resources/js/jquery.validate.min.js'></c:url>"></script>
+<script src="<c:url value='/resources/js/jquery.validate.min.js'></c:url>"></script>
 <script src="<c:url value='/resources/js/jquery-ui.min.js'></c:url>"></script>
-<script	src="<c:url value='/resources/js/additional-methods.min.js'></c:url>"></script>
+<script src="<c:url value='/resources/js/additional-methods.min.js'></c:url>"></script>
 <script>
 	$('form').validate({
 		rules : { //유효성검사
@@ -82,18 +83,52 @@ label.error {
 				required : '필수항목 입니다',
 				date : '날짜가 형식이 아닙니다'
 			}
-		}
+		},
+	  submitHandler: function(form) {
+		   if(!idCheck){
+			   alert('아이디 중복체크를 하세요.');
+			   return false;
+		   }
+		    return true;
+		 }
 	});
 	$.validator.addMethod("regex", function(value, element, regexp) {
 		var re = new RegExp(regexp);
 		return this.optional(element) || re.test(value);
 	}, "Please check your input.");
-	
+
 	$(function() {
 		$("#birthday").datepicker({
 			dateFormat : 'yy-mm-dd'
 		});
 	});
+
+	$('.btn-check-id').click(function(){
+		let me_id = $('[name=me_id]').val();
+		let obj = {
+				me_id : me_id
+		}
+		$.ajax({
+			async:true,
+			type:'POST',
+			data: JSON.stringify(obj),
+			url: '<c:url value="/check/id"></c:url>',
+			dataType:"json",
+			contentType:"application/json; charset=UTF-8",
+			success : function(data){
+			    if(data.res){
+			    	alert('사용 가능한 아이디입니다.');
+			    	idCheck = true;
+			    }else{
+			    	alert('이미 사용중인 아이디입니다.')
+			    }
+			}
+		});
+	});
+	$('[name=me_id]').change(function(){
+		idCheck = false;
+	});
+	let idCheck = false;
 </script>
 
 

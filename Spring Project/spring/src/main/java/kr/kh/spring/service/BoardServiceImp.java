@@ -253,4 +253,6 @@ public class BoardServiceImp implements BoardService {
 	public int getBoardTotalCount(Criteria cri) {
 		return boardDao.selectBoardTotalCount(cri);
 	}
+	
+	
 }

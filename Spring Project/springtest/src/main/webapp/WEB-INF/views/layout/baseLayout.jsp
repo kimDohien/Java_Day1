@@ -7,7 +7,7 @@
 <head>
 	<title>스프링</title>
 	<link rel="stylesheet" href="<c:url value='/resources/css/bootstrap.min.css'></c:url>">
-	<script src="<c:url value='/resources/js/jquery.slim.min.js'></c:url>"></script>
+	<script src="<c:url value='/resources/js/jquery.min.js'></c:url>"></script>
 	<script src="<c:url value='/resources/js/popper.min.js'></c:url>"></script>
 	<script src="<c:url value='/resources/js/bootstrap.bundle.min.js'></c:url>"></script>
 	<style>

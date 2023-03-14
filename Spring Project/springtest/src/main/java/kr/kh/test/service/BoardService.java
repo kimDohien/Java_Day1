@@ -18,7 +18,7 @@ public interface BoardService {
 
 	ArrayList<BoardVO> getBoardList(Criteria cri);
 
-	int getBoardTotalCount(Criteria cri);
+	int getTotalCountBoard(Criteria cri);
 
 	BoardVO getBoardAndUpdateView(int bo_num);
 
@@ -28,7 +28,9 @@ public interface BoardService {
 
 	BoardVO getBoard(int bo_num);
 
+	boolean updateBoard(BoardVO board, MemberVO user, MultipartFile[] files, int[] fileNums);
 
+	int updateLike(int li_bo_num, int li_state, MemberVO user);
 
 	
 }

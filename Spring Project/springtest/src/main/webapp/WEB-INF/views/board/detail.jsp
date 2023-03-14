@@ -29,8 +29,8 @@
 	<div class="form-control">${board.bo_views }</div>
 </div>
 <div>
-	<button class="btn btn-outline-success">추천(${board.bo_up})</button>
-	<button class="btn btn-outline-danger">비추천(${board.bo_down})</button>
+	<button class="btn btn-outline-success btn-up" data-state="1">추천(${board.bo_up})</button>
+	<button class="btn btn-outline-danger btn-down" data-state="-1">비추천(${board.bo_down})</button>
 </div>
 <div class="form-group">
 	<label>내용</label>
@@ -45,13 +45,25 @@
 	</div>
 </c:if>
 <a class="btn btn-success" href="<c:url value='/board/list'></c:url>">목록</a>
-<c:if test="${user != null && user.me_id == board.bo_me_id}">
-	<form action="<c:url value='/board/delete/${board.bo_num}'></c:url>" method="post" style="display:inline-block">
+<c:if test="${user != null && user.me_id == board.bo_me_id }">
+	<form action="<c:url value='/board/delete/${board.bo_num}'></c:url>" method="post" style="display: inline-block;">
 		<button class="btn btn-outline-danger">삭제</button>
 	</form>
-	<a href="<c:url value='/board/update/${board.bo_num}'></c:url>" class="btn btn-outline-success">수정</a>
+	<a href="<c:url value='/board/update/${board.bo_num}'></c:url>" class="btn btn-outline-danger">수정</a>
 </c:if>
-
-	
-
-
+<script>
+$('.btn-up, .btn-down').click(function(){
+	let li_state = $(this).data('state');
+	let bo_num = '${board.bo_num}';
+	let url = '<c:url value="/board/like/"></c:url>'+bo_num+'/' + li_state;
+	$.ajax({
+        async:true,
+        type:'get',
+        url: url,
+        dataType:"json",//서버에서 보낸 데이터의 타입. Map받으로 받을거기 때문에 json
+        success : function(data){
+            console.log(data);
+        }
+    });
+});
+</script>

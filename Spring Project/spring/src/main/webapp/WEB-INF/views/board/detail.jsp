@@ -189,7 +189,8 @@ var swiper = new Swiper(".mySwiper", {
   },
 });
 
-</script><script>
+</script>
+<script>
 $('.btn-comment-insert').click(function(){
 	//로그인 여부 체크
 	if('${user.me_id}' == ''){

@@ -1,5 +1,6 @@
 package kr.kh.spring.vo;
 
+import java.text.SimpleDateFormat;
 import java.util.Date;
 
 import lombok.Data;
@@ -15,6 +16,21 @@ public class CommentVO {
 	String co_me_id;
 	int co_bo_num;
 	int co_ori_num;
+	
+	//날짜 getter생성
+	public String getCo_register_date_str() {
+		SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+		if(co_register_date == null)
+			return "";//혹시 null이면 nullpointerexception안나오게 예외처리
+		return format.format(co_register_date);
+	}
+	
+	public String getCo_update_date_str() {
+		SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+		if(co_update_date == null)
+			return "";//혹시 null이면 nullpointerexception안나오게 예외처리
+		return format.format(co_update_date);
+	}
 	
 	public CommentVO(String co_content, String co_me_id, int co_bo_num, int co_ori_num) {
 		this.co_content = co_content;

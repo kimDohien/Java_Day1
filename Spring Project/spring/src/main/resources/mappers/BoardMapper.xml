@@ -140,4 +140,48 @@
   			from 
   				comment	
   	</insert>
+  	<select id="selectCommentList" resultType="kr.kh.spring.vo.CommentVO">
+  		select
+  			*
+  		from 
+  			comment
+  		where 
+  			co_bo_num = #{co_bo_num} <!-- 여기까지 하면 해당게시글의 전체댓글 -->
+  		order by
+  			co_ori_num desc, co_num asc 
+  		limit 
+  			#{cri.pageStart},#{cri.perPageNum}
+  	</select>
+  	<select id="selectTotalCountCommentList" resultType="int">
+  		select
+  			count(*)
+  		from 
+  			comment
+  		where 
+  			co_bo_num = #{co_bo_num} <!-- 여기까지 하면 해당게시글의 전체댓글 -->
+  	</select>
+  	<select id="selectComment" resultType="kr.kh.spring.vo.CommentVO">
+  		select
+  		 	*	
+  		 from 
+  		 	comment
+  		 where
+  		 	co_num = #{co_num}
+  	</select>
+  	<delete id="deleteComment">
+  		delete
+  		 	*	
+  		 from 
+  		 	comment
+  		 where
+  		 	co_num = #{co_num}
+  	</delete>
+  	<update id="udpateComment">
+  		update  
+  			comment
+  		set
+  			co_content = #{comment.co_content},
+  			co_update_date = now()
+  		where co_num = #{comment.co_num}
+  	</update>
 </mapper>

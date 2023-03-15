@@ -40,5 +40,13 @@ public interface BoardService {
 
 	boolean insertComment(CommentVO comment, MemberVO user);
 
+	ArrayList<CommentVO> getCommentList(Criteria cri, int co_bo_num);
+
+	int getTotalCountCommentList(int co_bo_num); //검색기능을 안하기때문에 criteria cri를 안넘겨줌
+
+	boolean deleteComment(CommentVO comment, MemberVO user);
+
+	boolean updateComment(CommentVO comment, MemberVO user);
+
 	
 }

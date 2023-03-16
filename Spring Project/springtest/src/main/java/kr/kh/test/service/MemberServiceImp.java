@@ -142,7 +142,15 @@ public class MemberServiceImp implements MemberService {
 		return updateCount != 0;
 	}
 
-	
+	@Override
+	public boolean checkId(MemberVO user) {
+		if(user == null ||user.getMe_id() == null) //id null체크는 안해됨. 왜냐면 id는 기본키인데 null이 될수없기때문.
+			return false;
+		String idRegex = "^[a-zA-Z][a-zA-Z0-9!@#$]{4,12}";
+		if (user.getMe_id() == null || !Pattern.matches(idRegex, user.getMe_id()))
+			return false;
+		return	memberDao.selectMemberByID(user.getMe_id()) == null;
+	}
 
 
 

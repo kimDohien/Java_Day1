@@ -1,30 +1,23 @@
 package kr.kh.test.controller;
 
-import java.text.DateFormat;
-import java.util.ArrayList;
-import java.util.Date;
-import java.util.Locale;
+import java.util.HashMap;
+import java.util.Map;
 
-import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.core.userdetails.User;
-import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
-import kr.kh.test.vo.MemberOKVO;
-import kr.kh.test.vo.MemberVO;
-import kr.kh.test.vo.BoardTypeVO;
 import kr.kh.test.service.MemberService;
 import kr.kh.test.utils.MessageUtils;
+import kr.kh.test.vo.MemberOKVO;
+import kr.kh.test.vo.MemberVO;
 
 
 @Controller
@@ -123,6 +116,14 @@ public class HomeController {
 		return mv;
 	}
 	
+	@ResponseBody
+	@RequestMapping(value="/check/id", method = RequestMethod.POST)
+	public Map<String, Object> checkId(@RequestBody MemberVO user){
+		HashMap<String, Object> map = new HashMap<String, Object>();
+		boolean res = memberService.checkId(user);
+		map.put("res",res);
+		return map;
+	}
 
 	
 }

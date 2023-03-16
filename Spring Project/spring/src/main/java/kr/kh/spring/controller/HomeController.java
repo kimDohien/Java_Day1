@@ -73,18 +73,23 @@ public class HomeController {
 	//로그인
 	@RequestMapping(value = "/login",method =RequestMethod.GET)
 	public ModelAndView login(ModelAndView mv) {
-		
 		mv.setViewName("/member/login");//연결
 		return mv;
 	}
 	@RequestMapping(value = "/login",method =RequestMethod.POST)
 	public ModelAndView loginPost(ModelAndView mv,MemberVO member) {
 		MemberVO user = memberService.login(member);
-		mv.addObject("user",user);
-		if(user != null)			
+		
+		if(user != null) {			
 			mv.setViewName("redirect:/");//연결
-		else
+			/*자동로그인 체크여부는 화면에서 가져오는거지 DB에서 가져오는게 아니다.
+			 * user는 DB에서 가져온 회원 정보라 자동 로그인 여부를 알수 없다.
+			 * 그래서 화면에서 가져온 member에 있는 자동 로그인 여부를 user에 수정
+			 */
+			user.setAutoLogin(member.isAutoLogin());
+		}else
 			mv.setViewName("redirect:/login");
+		mv.addObject("user",user);
 		return mv;
 	}
 	
@@ -100,6 +105,8 @@ public class HomeController {
 			}
 			//세션에 있는 정보 삭제
 			session.removeAttribute("user");
+			user.setMe_session_limit(null);
+			memberService.updateMemberBySession(user);
 			mv.setViewName("redirect:/");//연결
 			return mv;
 		}

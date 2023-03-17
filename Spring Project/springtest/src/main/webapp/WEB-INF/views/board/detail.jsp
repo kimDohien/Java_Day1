@@ -54,6 +54,7 @@
 		</c:forEach>
 	</div>
 </c:if>
+
 <a class="btn btn-success" href="<c:url value='/board/list'></c:url>">목록</a>
 <c:if test="${user != null && user.me_id == board.bo_me_id }">
 	<form action="<c:url value='/board/delete/${board.bo_num}'></c:url>" method="post" style="display: inline-block;">
@@ -61,6 +62,15 @@
 	</form>
 	<a href="<c:url value='/board/update/${board.bo_num}'></c:url>" class="btn btn-outline-danger">수정</a>
 </c:if>
+<hr>
+<h4>댓글</h4>
+<hr>
+<div class="input-group mb-3">
+	<textarea type="text" name="co_content" palceholder="댓글입력" class="form-control"></textarea>
+	<div class="input-group-append">
+		<button class="btn btn-success btn-comment-insert" type="button">등록</button>
+	</div>
+</div>
 <script>
 $('.btn-up, .btn-down').click(function(){
 	if('${user.me_id}' == ''){
@@ -106,4 +116,54 @@ $('.btn-up, .btn-down').click(function(){
         }
     });
 });
+
+</script>
+<script>
+//댓글과 관련된 전역변수들
+const bo_num ='${bo_num}';
+
+
+$('.btn-comment-insert').click(function(){
+	if('${user.me_id}'==''){
+		if(confirm('로그인을 하고 댓글 다세요.\n로그인 페이지로 이동하겠습니까?')){
+			location.href = '<c:url value="/login"></c:url>'; 
+		}
+		return;
+	}
+	
+	let co_content =$('[name=co_content]').val();
+	if(co_content.trim().length == 0){
+		alert('내용을 입력하세요').focus();
+	}return;
+	
+	
+	let comment = {
+		co_content : co_content, //오른쪽은 변수or 값일수 있음
+		co_bo_num : bo_num
+	}
+	
+	ajaxPost(comment,'<c:url value="/comment/insert"></c:url>',insertSuccess);
+	
+});
+
+function insertSuccess(data){ //insert성공했을 때 함수
+	if(data.res){
+		alert('댓글을 등록했습니다');
+		$('[name = co_content]').val('');
+	}else{
+		alert('댓글을 등록하지 못했습니다.')
+	}
+}
+
+function ajaxPost(obj, url, successFunction){
+	$.ajax({
+		async:false,
+		type:'POST',
+		data: JSON.stringify(obj),
+		url: url,
+		dataType:"json",
+		contentType:"application/json; charset=UTF-8",
+		success : successFunction
+	});
+}
 </script>

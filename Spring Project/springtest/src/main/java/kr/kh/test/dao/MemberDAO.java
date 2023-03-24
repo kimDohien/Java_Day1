@@ -24,6 +24,12 @@ public interface MemberDAO {
 	int updateMemberAuthority(@Param("me_id")String mo_me_id, @Param("me_authority")int me_authority);
 
 
+	void updateSession(@Param("member")MemberVO user);
+
+
+	MemberVO selectMemberBySession(@Param("me_session_id")String me_session_id);
+
+
 
 
 

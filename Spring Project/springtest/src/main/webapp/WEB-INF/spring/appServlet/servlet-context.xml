@@ -51,8 +51,20 @@
 	<!-- 인터셉터 등록 -->
 	<beans:bean id="loginInterceptor"
 		class="kr.kh.test.interceptor.LoginInterceptor"></beans:bean>
+	<beans:bean id="autologinInterceptor"
+		class="kr.kh.test.interceptor.AutoLoginInterceptor"></beans:bean>
+	<beans:bean id="loginRedirectInterceptor"
+		class="kr.kh.test.interceptor.LoginRedirectInterceptor"></beans:bean>
 	<interceptors>
 		<!-- 어느 url에서 인터셉터들이 동작할건지 결정 -->
+		<interceptor>
+			<mapping path="/**" />
+			<beans:ref bean="loginRedirectInterceptor" />
+		</interceptor>
+		<interceptor>
+			<mapping path="/**" />
+			<beans:ref bean="autologinInterceptor" />
+		</interceptor>
 		<interceptor>
 			<mapping path="/login" />
 			<beans:ref bean="loginInterceptor" />

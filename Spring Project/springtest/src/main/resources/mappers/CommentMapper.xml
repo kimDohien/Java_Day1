@@ -9,9 +9,9 @@
  		select
  		ifnull(max(co_num),0)+1,
  		ifnull(max(co_num),0)+1,
- 		#{comment,co_content},
- 		#{comment,co_me_id},
- 		#{comment,co_bo_num}
+ 		#{comment.co_content},
+ 		#{comment.co_me_id},
+ 		#{comment.co_bo_num}
  	from 
  		comment
  </insert>

@@ -3,6 +3,7 @@ package kr.kh.test.controller;
 import java.util.HashMap;
 import java.util.Map;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
@@ -30,70 +31,80 @@ public class HomeController {
 
 	
 	@RequestMapping(value = "/", method = RequestMethod.GET)
-	public ModelAndView home(ModelAndView mv,Integer num) {
-		String id = memberService.selectMemberName(num);
+	public ModelAndView home(ModelAndView mv, Integer num, 
+			HttpServletResponse response,
+			HttpServletRequest request) {
+		String name = memberService.selectMemberName(num);
 		mv.setViewName("/main/home");
-		return mv ;
+		return mv;
 	}
-	
 	@RequestMapping(value = "/signup", method = RequestMethod.GET)
 	public ModelAndView signup(ModelAndView mv) {
 		mv.setViewName("/member/signup");
-		return mv ;
-	}	
-	
-	@RequestMapping(value = "/signup", method = RequestMethod.POST)
-	public ModelAndView signupPost(ModelAndView mv , MemberVO member, HttpServletResponse response) {
-		boolean isSignup = memberService.signup(member); //회원가입 성공했는지 물어보기	
-		if(isSignup) {
-			//성공했다고 알림 메시지(추후 구현 예정)
-			MessageUtils.alertAndMovePage(response, "회원가입에 성공했습니다", contextPath, "/");
-			mv.setViewName("redirect:/"); //성공하면 메인페이지
-		}else {
-			//실패했다고 알림 메시지(추후 구현 예정)
-			MessageUtils.alertAndMovePage(response, "회원가입에 실패했습니다", contextPath, "/");
-			mv.setViewName("redirect:/signup");//연결실패
-			return mv;
-		}	
 		return mv;
 	}
-	
-	
-	
-	
-	@RequestMapping(value= "/login", method = RequestMethod.GET)
-	public ModelAndView login(ModelAndView mv) {
+	@RequestMapping(value = "/signup", method = RequestMethod.POST)
+	public ModelAndView signupPost(ModelAndView mv, MemberVO member,
+			HttpServletResponse response) {	
+		boolean res = memberService.signup(member);
+		String msg , url;
+		if(res) {
+			//성공했다고 알림 메세지
+			//MessageUtils.alertAndMovePage(response, "회원가입에 성공했습니다.", 
+			//		contextPath, "/");
+			msg = "회원가입에 성공했습니다.";
+			url = "/";
+		}else {
+			//실패했다고 알림 메세지
+			//MessageUtils.alertAndMovePage(response, "회원가입에 실패했습니다.", 
+			//		contextPath, "/signup");
+			msg = "회원가입에 실패했습니다.";
+			url = "/signup";
+		}
+		mv.addObject("url", url);
+		mv.addObject("msg", msg);
+		mv.setViewName("/common/message");
+		return mv;
+	}
+	@RequestMapping(value = "/login", method = RequestMethod.GET)
+	public ModelAndView login(ModelAndView mv,HttpServletRequest request) {
+		String url = request.getHeader("Referer");
+		if(url != null && !url.contains("login")) {
+			request.getSession().setAttribute("prevURL", url);
+		}
 		mv.setViewName("/member/login");
 		return mv;
 	}
-	
 	@RequestMapping(value = "/login", method = RequestMethod.POST)
-	public ModelAndView loginPost(ModelAndView mv, MemberVO member,HttpServletResponse response) {
+	public ModelAndView loginPost(ModelAndView mv,MemberVO member,
+			HttpServletResponse response) {
 		MemberVO user = memberService.login(member);
-		//회원정보가 있으면
+		String msg , url;
 		//인증한 회원들만 로그인 하도록
-		if(user != null && user.getMe_authority() > 0) {	
-			//mv.addObject를 하는 이유는 인터셉터를 하기 위해
-			mv.addObject("user",user);
-			mv.setViewName("redirect:/"); 
-			MessageUtils.alertAndMovePage(response, "로그인에 성공했습니다", contextPath, "/");
-		//회원정보가 없으면
+		if(user != null && user.getMe_authority() > 0) {
+			user.setAutoLogin(member.isAutoLogin());
+			mv.addObject("user", user);
+			msg = "로그인에 성공했습니다.";
+			url = "/";
 		}else {
-			if(user != null) {
-				//인증 안된 회원이라고 메시지
-				MessageUtils.alertAndMovePage(response, "이메일 인증을 완료해야 로그인 완료가능", contextPath, "/login");
-			}else {
-				MessageUtils.alertAndMovePage(response, "로그인에 실패했습니다.", contextPath, "/login");
-			}
-			mv.setViewName("redirect:/login");
+			url = "/login";
+			if(user != null) 
+				msg = "이메일 인증을 완료해야 로그인이 가능합니다.";
+			else 
+				msg ="로그인에 실패했습니다.";
 		}
+		mv.addObject("url", url);
+		mv.addObject("msg", msg);
+		mv.setViewName("/common/message");
 		return mv;
 	}
-	
-	@RequestMapping(value= "/logout", method = RequestMethod.GET)
+	@RequestMapping(value = "/logout", method = RequestMethod.GET)
 	public ModelAndView logoutPost(ModelAndView mv, HttpSession session, 
 			HttpServletResponse response) {
 		if(session != null) {
+			MemberVO user = (MemberVO) session.getAttribute("user");
+			user.setMe_session_limit(null);
+			memberService.updateMemberBySession(user);
 			session.removeAttribute("user");
 			MessageUtils.alertAndMovePage(response, "로그아웃에 성공했습니다.", 
 					contextPath, "/");
@@ -124,6 +135,7 @@ public class HomeController {
 		map.put("res",res);
 		return map;
 	}
+
 
 	
 }

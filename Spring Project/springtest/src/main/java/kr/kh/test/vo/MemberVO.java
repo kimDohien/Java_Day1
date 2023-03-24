@@ -15,6 +15,9 @@ public class MemberVO {
 	Date me_birthday;
 	int me_authority;
 	Date me_join_time;
+	String me_session_id;
+	Date me_session_limit;
+	boolean autoLogin;
 	
 	
 	//setter기 때문에 set으로 써줘야함. get을 쓰면 에러
